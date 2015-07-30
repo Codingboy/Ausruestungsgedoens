@@ -18,7 +18,7 @@ if (_actionType == 1) then
 };
 if (_actionType == 0) then
 {
-	[typeof _unit, _actionType, [_ace], _action] call ace_interact_menu_fnc_addActionToClass;
+	[_unit, _actionType, [_ace], _action] call ace_interact_menu_fnc_addActionToClass;
 }
 else
 {

@@ -28,6 +28,10 @@ if (isClass (configFile >> "CfgPatches" >> "ace_optics")) then
 	CODI_Loadout_ScopeSelector_scopes pushBack ["ACE_optic_Arco_PIP","ARCO (PIP)",["Rifleman","DM"]];
 	CODI_Loadout_ScopeSelector_scopes pushBack ["ACE_optic_Arco_2D","ARCO (2D)",["Rifleman","DM"]];
 };
+if (isClass (configFile >> "CfgPatches" >> "RH_acc")) then
+{
+	CODI_Loadout_ScopeSelector_scopes pushBack ["RH_ta648","ACOG",["Rifleman","DM"]];
+};
 {
 	if (
 		((CODI_Loadout_Class == "Sniper" || CODI_Loadout_Class == "SS") && "Sniper" in (_x select 2)) ||

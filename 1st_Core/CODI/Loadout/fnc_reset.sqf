@@ -1,12 +1,13 @@
-private["_class","_blufor","_opfor","_independent","_bwfleck","_bwtropen","_all"];
+private["_class","_blufor","_opfor","_independent","_bwfleck","_bwtropen","_all","_usfleck","_ustropen"];
 
 _blufor = 0;
 _opfor = 1;
 _independent = 2;
 _bwfleck = 3;
 _bwtropen = 4;
-_maxIndex = _bwtropen;
-_all = [_blufor, _opfor, _independent, _bwfleck, _bwtropen];
+_usfleck = 5;
+_ustropen = 6;
+_all = [_blufor, _opfor, _independent, _bwfleck, _bwtropen, _usfleck, _ustropen];
 
 //initialise variables
 CODI_Loadout_Uniform = [];
