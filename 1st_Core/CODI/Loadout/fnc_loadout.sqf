@@ -17,6 +17,9 @@ switch (toLower _class) do
 	case toLower "b_soldier_unarmed_f";
 	case toLower "o_soldier_unarmed_f";
 	case toLower "i_soldier_unarmed_f";
+	case toLower "b_survivor_F";
+	case toLower "o_survivor_F";
+	case toLower "i_survivor_F";
 	case toLower "Unarmed":
 	{
 		CODI_Loadout_Class = "Unarmed";
@@ -272,6 +275,8 @@ switch (toLower _class) do
 		[_independent, "LMG_Mk200_F"] call CODI_Loadout_fnc_setRifle;
 		[_bwfleck, "LMG_Mk200_F"] call CODI_Loadout_fnc_setRifle;
 		[_bwtropen, "LMG_Mk200_F"] call CODI_Loadout_fnc_setRifle;
+		[_usfleck, "rhs_weap_m249_pip_S"] call CODI_Loadout_fnc_setRifle;
+		[_ustropen, "rhs_weap_m249_pip_S"] call CODI_Loadout_fnc_setRifle;
 		[_opfor, "bipod_01_F_blk"] call CODI_Loadout_fnc_setRifleBipod;
 		[_independent, "bipod_01_F_blk"] call CODI_Loadout_fnc_setRifleBipod;
 		[_bwtropen, "bipod_01_F_blk"] call CODI_Loadout_fnc_setRifleBipod;
@@ -280,20 +285,28 @@ switch (toLower _class) do
 		[_independent, "200Rnd_65x39_cased_Box_Tracer", 4] call CODI_Loadout_fnc_addBackpackAmmo;
 		[_bwfleck, "200Rnd_65x39_cased_Box_Tracer", 4] call CODI_Loadout_fnc_addBackpackAmmo;
 		[_bwtropen, "200Rnd_65x39_cased_Box_Tracer", 4] call CODI_Loadout_fnc_addBackpackAmmo;
+		[_usfleck, "rhs_200rnd_556x45_T_SAW", 4] call CODI_Loadout_fnc_addBackpackAmmo;
+		[_ustropen, "rhs_200rnd_556x45_T_SAW", 4] call CODI_Loadout_fnc_addBackpackAmmo;
 		[_blufor] call CODI_Loadout_fnc_clearRifleAmmo;
 		[_opfor] call CODI_Loadout_fnc_clearRifleAmmo;
 		[_independent] call CODI_Loadout_fnc_clearRifleAmmo;
 		[_bwfleck] call CODI_Loadout_fnc_clearRifleAmmo;
 		[_bwtropen] call CODI_Loadout_fnc_clearRifleAmmo;
+		[_usfleck] call CODI_Loadout_fnc_clearRifleAmmo;
+		[_ustropen] call CODI_Loadout_fnc_clearRifleAmmo;
 		[_blufor, "100Rnd_65x39_caseless_mag_Tracer"] call CODI_Loadout_fnc_addRifleAmmo;
 		[_opfor, "200Rnd_65x39_cased_Box_Tracer"] call CODI_Loadout_fnc_addRifleAmmo;
 		[_independent, "200Rnd_65x39_cased_Box_Tracer"] call CODI_Loadout_fnc_addRifleAmmo;
 		[_bwfleck, "200Rnd_65x39_cased_Box_Tracer"] call CODI_Loadout_fnc_addRifleAmmo;
 		[_bwtropen, "200Rnd_65x39_cased_Box_Tracer"] call CODI_Loadout_fnc_addRifleAmmo;
+		[_usfleck, "200Rnd_65x39_cased_Box_Tracer"] call CODI_Loadout_fnc_addRifleAmmo;
+		[_ustropen, "200Rnd_65x39_cased_Box_Tracer"] call CODI_Loadout_fnc_addRifleAmmo;
 		[_opfor, "muzzle_snds_H_MG"] call CODI_Loadout_fnc_setRifleSilencer;
 		[_independent, "muzzle_snds_H_MG"] call CODI_Loadout_fnc_setRifleSilencer;
 		[_bwfleck, "muzzle_snds_H_MG"] call CODI_Loadout_fnc_setRifleSilencer;
 		[_bwtropen, "muzzle_snds_H_MG"] call CODI_Loadout_fnc_setRifleSilencer;
+		[_usfleck, ""] call CODI_Loadout_fnc_setRifleSilencer;
+		[_ustropen, ""] call CODI_Loadout_fnc_setRifleSilencer;
 		{
 			[_x] call CODI_Loadout_fnc_clearVestAmmo;
 			if (isClass (configFile >> "CfgPatches" >> "ace_overheating")) then
@@ -313,12 +326,15 @@ switch (toLower _class) do
 		[_independent, "200Rnd_65x39_cased_Box_Tracer", 5] call CODI_Loadout_fnc_addBackpackAmmo;
 		[_bwfleck, "200Rnd_65x39_cased_Box_Tracer", 5] call CODI_Loadout_fnc_addBackpackAmmo;
 		[_bwtropen, "200Rnd_65x39_cased_Box_Tracer", 5] call CODI_Loadout_fnc_addBackpackAmmo;
+		[_usfleck, "rhs_200rnd_556x45_T_SAW", 5] call CODI_Loadout_fnc_addBackpackAmmo;
+		[_ustropen, "rhs_200rnd_556x45_T_SAW", 5] call CODI_Loadout_fnc_addBackpackAmmo;
 	};
 	case toLower "MMG":
 	{
 		["Rifleman"] call CODI_Loadout_fnc_loadout;
 		CODI_Loadout_Class = "MMG";
 		{
+			[_x] call CODI_Loadout_fnc_clearRifleAmmo;
 			[_x] call CODI_Loadout_fnc_clearVestAmmo;
 			[_x, "LMG_Zafir_F"] call CODI_Loadout_fnc_setRifle;
 			[_x, "150Rnd_762x54_Box_Tracer"] call CODI_Loadout_fnc_addRifleAmmo;
@@ -331,7 +347,22 @@ switch (toLower _class) do
 			[_x, ""] call CODI_Loadout_fnc_setRifleSilencer;
 			[_x, ""] call CODI_Loadout_fnc_setRifleBipod;
 		}
-		forEach _all;
+		forEach [_blufor,_independent,_opfor,_bwfleck,_bwtropen];
+		{
+			[_x] call CODI_Loadout_fnc_clearRifleAmmo;
+			[_x] call CODI_Loadout_fnc_clearVestAmmo;
+			[_x, "rhs_weap_m240B_CAP"] call CODI_Loadout_fnc_setRifle;
+			[_x, "rhsusf_100Rnd_762x51_m80a1epr"] call CODI_Loadout_fnc_addRifleAmmo;
+			[_x, "rhsusf_100Rnd_762x51_m80a1epr", 4] call CODI_Loadout_fnc_addBackpackAmmo;
+			if (isClass (configFile >> "CfgPatches" >> "ace_overheating")) then
+			{
+				[_x, "ACE_SpareBarrel", 1] call CODI_Loadout_fnc_addBackpackItem;
+			};
+			[_x, "G_Combat"] call CODI_Loadout_fnc_setGoggles;
+			[_x, ""] call CODI_Loadout_fnc_setRifleSilencer;
+			[_x, ""] call CODI_Loadout_fnc_setRifleBipod;
+		}
+		forEach [_usfleck,_ustropen];
 	};
 	case toLower "AsMMG":
 	{
@@ -340,7 +371,11 @@ switch (toLower _class) do
 		{
 			[_x, "150Rnd_762x54_Box_Tracer", 5] call CODI_Loadout_fnc_addBackpackAmmo;
 		}
-		forEach _all;
+		forEach [_blufor,_independent,_opfor,_bwfleck,_bwtropen];
+		{
+			[_x, "rhsusf_100Rnd_762x51_m80a1epr", 5] call CODI_Loadout_fnc_addBackpackAmmo;
+		}
+		forEach [_usfleck,_ustropen];
 	};
 	case toLower "HMG";
 	case toLower "B_HeavyGunner_F";
@@ -353,12 +388,17 @@ switch (toLower _class) do
 		[_independent, "MMG_02_black_F"] call CODI_Loadout_fnc_setRifle;
 		[_bwfleck, "MMG_02_black_F"] call CODI_Loadout_fnc_setRifle;
 		[_bwtropen, "MMG_02_sand_F"] call CODI_Loadout_fnc_setRifle;
+		[_usfleck, "MMG_02_black_F"] call CODI_Loadout_fnc_setRifle;
+		[_ustropen, "MMG_02_black_F"] call CODI_Loadout_fnc_setRifle;
 		[_blufor, "bipod_01_F_snd"] call CODI_Loadout_fnc_setRifleBipod;
 		[_opfor, "bipod_01_F_blk"] call CODI_Loadout_fnc_setRifleBipod;
 		[_independent, "bipod_01_F_blk"] call CODI_Loadout_fnc_setRifleBipod;
 		[_bwfleck, "bipod_01_F_blk"] call CODI_Loadout_fnc_setRifleBipod;
 		[_bwtropen, "bipod_01_F_snd"] call CODI_Loadout_fnc_setRifleBipod;
+		[_usfleck, "bipod_01_F_blk"] call CODI_Loadout_fnc_setRifleBipod;
+		[_ustropen, "bipod_01_F_blk"] call CODI_Loadout_fnc_setRifleBipod;
 		{
+			[_x] call CODI_Loadout_fnc_clearRifleAmmo;
 			[_x] call CODI_Loadout_fnc_clearVestAmmo;
 			[_x, "130Rnd_338_Mag"] call CODI_Loadout_fnc_addRifleAmmo;
 			[_x, "130Rnd_338_Mag", 4] call CODI_Loadout_fnc_addBackpackAmmo;
@@ -391,6 +431,8 @@ switch (toLower _class) do
 		{
 			[_bwfleck, "seesack_fleck_m"] call CODI_Loadout_fnc_setBackpack;
 			[_bwtropen, "seesack_tropen_m"] call CODI_Loadout_fnc_setBackpack;
+			[_usfleck, "seesack_fleck_m"] call CODI_Loadout_fnc_setBackpack;
+			[_ustropen, "seesack_tropen_m"] call CODI_Loadout_fnc_setBackpack;
 		};
 		{
 			if (isClass (configFile >> "CfgPatches" >> "ace_medical")) then
@@ -481,11 +523,12 @@ switch (toLower _class) do
 		{
 			[_bwfleck, "srifle_DMR_03_F"] call CODI_Loadout_fnc_setRifle;
 			[_bwtropen, "srifle_DMR_03_tan_F"] call CODI_Loadout_fnc_setRifle;
-			[_x] call CODI_Loadout_fnc_clearVestAmmo;
-			[_x] call CODI_Loadout_fnc_clearRifleAmmo;
-			[_x, "hlc_20rnd_762x51_Mk316_G3"] call CODI_Loadout_fnc_addRifleAmmo;
-			[_x, "hlc_20rnd_762x51_Mk316_G3", 6] call CODI_Loadout_fnc_addBackpackAmmo;
-			[_x, "hlc_20rnd_762x51_T_G3", 6] call CODI_Loadout_fnc_addBackpackAmmo;
+			[_bwfleck] call CODI_Loadout_fnc_clearVestAmmo;
+			[_bwtropen] call CODI_Loadout_fnc_clearRifleAmmo;
+			[_bwfleck, "hlc_20rnd_762x51_Mk316_G3"] call CODI_Loadout_fnc_addRifleAmmo;
+			[_bwtropen, "hlc_20rnd_762x51_Mk316_G3"] call CODI_Loadout_fnc_addRifleAmmo;
+			[_bwfleck, "hlc_20rnd_762x51_Mk316_G3", 6] call CODI_Loadout_fnc_addBackpackAmmo;
+			[_bwtropen, "hlc_20rnd_762x51_T_G3", 6] call CODI_Loadout_fnc_addBackpackAmmo;
 		};
 	};
 	case toLower "Gren";
@@ -498,6 +541,8 @@ switch (toLower _class) do
 		[_blufor, "arifle_MX_GL_F"] call CODI_Loadout_fnc_setRifle;
 		[_opfor, "arifle_Katiba_GL_F"] call CODI_Loadout_fnc_setRifle;
 		[_independent, "arifle_Mk20_GL_F"] call CODI_Loadout_fnc_setRifle;
+		[_usfleck, "rhs_weap_m4a1_m320"] call CODI_Loadout_fnc_setRifle;
+		[_ustropen, "rhs_weap_m4a1_m320"] call CODI_Loadout_fnc_setRifle;
 		if (isClass (configFile >> "CfgPatches" >> "hlcweapons_g3")) then
 		{
 			[_bwfleck, "HLC_Rifle_g3ka4_GL"] call CODI_Loadout_fnc_setRifle;
@@ -520,7 +565,20 @@ switch (toLower _class) do
 				[_x, "Rangefinder"] call CODI_Loadout_fnc_setBinocular;
 			};
 		}
-		forEach _all;
+		forEach [_blufor,_independent,_opfor,_bwfleck,_bwtropen];
+		{
+			[_x, "rhs_mag_M441_HE", 29] call CODI_Loadout_fnc_addBackpackAmmo;
+			[_x, "rhs_mag_M441_HE"] call CODI_Loadout_fnc_addRifleAmmo;
+			if (isClass (configFile >> "CfgPatches" >> "ace_yardage450")) then
+			{
+				[_x, "ACE_Yardage450"] call CODI_Loadout_fnc_setBinocular;
+			}
+			else
+			{
+				[_x, "Rangefinder"] call CODI_Loadout_fnc_setBinocular;
+			};
+		}
+		forEach [_usfleck,_ustropen];
 		[_blufor, ""] call CODI_Loadout_fnc_setRifleBipod;
 		[_bwfleck, ""] call CODI_Loadout_fnc_setRifleBipod;
 		[_bwtropen, ""] call CODI_Loadout_fnc_setRifleBipod;
@@ -533,8 +591,8 @@ switch (toLower _class) do
 		["Gren"] call CODI_Loadout_fnc_loadout;
 		CODI_Loadout_Class = "FTL";
 		{
-			[_x] call CODI_Loadout_fnc_clearBackpackAmmo;
-			[_x, "1Rnd_HE_Grenade_shell", 19] call CODI_Loadout_fnc_addBackpackAmmo;
+			//[_x] call CODI_Loadout_fnc_clearBackpackAmmo;
+			//[_x, "1Rnd_HE_Grenade_shell", 19] call CODI_Loadout_fnc_addBackpackAmmo;
 			[_x, "SmokeShellGreen", 10] call CODI_Loadout_fnc_addBackpackItem;
 			if (isClass (configFile >> "CfgPatches" >> "ace_grenades")) then
 			{
@@ -666,11 +724,15 @@ switch (toLower _class) do
 		[_independent, "I_UAV_01_backpack_F"] call CODI_Loadout_fnc_setBackpack;
 		[_bwfleck, "B_UAV_01_backpack_F"] call CODI_Loadout_fnc_setBackpack;
 		[_bwtropen, "B_UAV_01_backpack_F"] call CODI_Loadout_fnc_setBackpack;
+		[_usfleck, "B_UAV_01_backpack_F"] call CODI_Loadout_fnc_setBackpack;
+		[_ustropen, "B_UAV_01_backpack_F"] call CODI_Loadout_fnc_setBackpack;
 		[_blufor, "B_UavTerminal"] call CODI_Loadout_fnc_setGPS;
 		[_opfor, "O_UavTerminal"] call CODI_Loadout_fnc_setGPS;
 		[_independent, "I_UavTerminal"] call CODI_Loadout_fnc_setGPS;
 		[_bwfleck, "B_UavTerminal"] call CODI_Loadout_fnc_setGPS;
 		[_bwtropen, "B_UavTerminal"] call CODI_Loadout_fnc_setGPS;
+		[_usfleck, "B_UavTerminal"] call CODI_Loadout_fnc_setGPS;
+		[_ustropen, "B_UavTerminal"] call CODI_Loadout_fnc_setGPS;
 	};
 	case toLower "Eng";
 	case toLower "B_engineer_F";
@@ -722,6 +784,8 @@ switch (toLower _class) do
 		[_independent, "tf_anprc155"] call CODI_Loadout_fnc_setBackpack;
 		[_bwfleck, "tf_rt1523g_big_bwmod"] call CODI_Loadout_fnc_setBackpack;
 		[_bwtropen, "tf_rt1523g_big_bwmod_tropen"] call CODI_Loadout_fnc_setBackpack;
+		[_usfleck, "tf_rt1523g_big_bwmod"] call CODI_Loadout_fnc_setBackpack;
+		[_ustropen, "tf_rt1523g_big_bwmod_tropen"] call CODI_Loadout_fnc_setBackpack;
 		if (isClass (configFile >> "CfgPatches" >> "ace_vehiclelock")) then
 		{
 			[_blufor, "ACE_key_lockpick", 1] call CODI_Loadout_fnc_addUniformItem;
@@ -755,6 +819,8 @@ switch (toLower _class) do
 			[_independent, "U_I_FullGhillie_lsh"] call CODI_Loadout_fnc_setUniform;
 			[_bwfleck, "U_I_FullGhillie_lsh"] call CODI_Loadout_fnc_setUniform;
 			[_bwtropen, "U_B_FullGhillie_ard"] call CODI_Loadout_fnc_setUniform;
+			[_usfleck, "U_I_FullGhillie_lsh"] call CODI_Loadout_fnc_setUniform;
+			[_ustropen, "U_B_FullGhillie_ard"] call CODI_Loadout_fnc_setUniform;
 		}
 		else
 		{
@@ -763,20 +829,28 @@ switch (toLower _class) do
 			[_independent, "U_I_GhillieSuit"] call CODI_Loadout_fnc_setUniform;
 			[_bwfleck, "BWA3_Uniform_Ghillie_Fleck"] call CODI_Loadout_fnc_setUniform;
 			[_bwtropen, "BWA3_Uniform_Ghillie_Tropen"] call CODI_Loadout_fnc_setUniform;
+			[_usfleck, "U_B_GhillieSuit"] call CODI_Loadout_fnc_setUniform;
+			[_ustropen, "U_B_GhillieSuit"] call CODI_Loadout_fnc_setUniform;
 		};
-		[_blufor, "srifle_LRR_F"] call CODI_Loadout_fnc_setUniform;
-		[_opfor, "srifle_GM6_camo_F"] call CODI_Loadout_fnc_setUniform;
-		[_independent, "srifle_LRR_F"] call CODI_Loadout_fnc_setUniform;
-		[_bwfleck, "srifle_LRR_F"] call CODI_Loadout_fnc_setUniform;
-		[_bwtropen, "srifle_LRR_F"] call CODI_Loadout_fnc_setUniform;
+		[_blufor, "srifle_LRR_F"] call CODI_Loadout_fnc_setRifle;
+		[_opfor, "srifle_GM6_camo_F"] call CODI_Loadout_fnc_setRifle;
+		[_independent, "srifle_LRR_F"] call CODI_Loadout_fnc_setRifle;
+		[_bwfleck, "srifle_LRR_F"] call CODI_Loadout_fnc_setRifle;
+		[_bwtropen, "srifle_LRR_F"] call CODI_Loadout_fnc_setRifle;
+		[_usfleck, "srifle_LRR_F"] call CODI_Loadout_fnc_setRifle;
+		[_ustropen, "hlc_rifle_awmagnum_FDE"] call CODI_Loadout_fnc_setRifle;
 		[_blufor, "7Rnd_408_Mag"] call CODI_Loadout_fnc_addRifleAmmo;
 		[_independent, "7Rnd_408_Mag"] call CODI_Loadout_fnc_addRifleAmmo;
 		[_bwfleck, "7Rnd_408_Mag"] call CODI_Loadout_fnc_addRifleAmmo;
 		[_bwtropen, "7Rnd_408_Mag"] call CODI_Loadout_fnc_addRifleAmmo;
+		[_usfleck, "hlc_5rnd_300WM_mk248_AWM"] call CODI_Loadout_fnc_addRifleAmmo;
+		[_ustropen, "hlc_5rnd_300WM_mk248_AWM"] call CODI_Loadout_fnc_addRifleAmmo;
 		[_blufor, "7Rnd_408_Mag", 4] call CODI_Loadout_fnc_addVestAmmo;
 		[_independent, "7Rnd_408_Mag", 4] call CODI_Loadout_fnc_addVestAmmo;
 		[_bwfleck, "7Rnd_408_Mag", 4] call CODI_Loadout_fnc_addVestAmmo;
 		[_bwtropen, "7Rnd_408_Mag", 4] call CODI_Loadout_fnc_addVestAmmo;
+		[_usfleck, "hlc_5rnd_300WM_mk248_AWM", 6] call CODI_Loadout_fnc_addVestAmmo;
+		[_ustropen, "hlc_5rnd_300WM_mk248_AWM", 6] call CODI_Loadout_fnc_addVestAmmo;
 		if (isClass (configFile >> "CfgPatches" >> "ace_ballistics")) then
 		{
 			[_opfor, "ACE_5Rnd_127x99_AMAX_Mag"] call CODI_Loadout_fnc_addRifleAmmo;
@@ -809,6 +883,8 @@ switch (toLower _class) do
 		[_independent, "tf_anprc155"] call CODI_Loadout_fnc_setBackpack;
 		[_bwfleck, "tf_rt1523g_big_bwmod"] call CODI_Loadout_fnc_setBackpack;
 		[_bwtropen, "tf_rt1523g_big_bwmod_tropen"] call CODI_Loadout_fnc_setBackpack;
+		[_usfleck, "tf_rt1523g_big_bwmod"] call CODI_Loadout_fnc_setBackpack;
+		[_ustropen, "tf_rt1523g_big_bwmod_tropen"] call CODI_Loadout_fnc_setBackpack;
 	};
 	case toLower "Spotter";
 	case toLower "B_spotter_F";
@@ -824,6 +900,8 @@ switch (toLower _class) do
 			[_independent, "U_I_FullGhillie_lsh"] call CODI_Loadout_fnc_setUniform;
 			[_bwfleck, "U_I_FullGhillie_lsh"] call CODI_Loadout_fnc_setUniform;
 			[_bwtropen, "U_B_FullGhillie_ard"] call CODI_Loadout_fnc_setUniform;
+			[_usfleck, "U_I_FullGhillie_lsh"] call CODI_Loadout_fnc_setUniform;
+			[_ustropen, "U_B_FullGhillie_ard"] call CODI_Loadout_fnc_setUniform;
 		}
 		else
 		{
@@ -832,6 +910,8 @@ switch (toLower _class) do
 			[_independent, "U_I_GhillieSuit"] call CODI_Loadout_fnc_setUniform;
 			[_bwfleck, "BWA3_Uniform_Ghillie_Fleck"] call CODI_Loadout_fnc_setUniform;
 			[_bwtropen, "BWA3_Uniform_Ghillie_Tropen"] call CODI_Loadout_fnc_setUniform;
+			[_usfleck, "U_B_GhillieSuit"] call CODI_Loadout_fnc_setUniform;
+			[_ustropen, "U_B_GhillieSuit"] call CODI_Loadout_fnc_setUniform;
 		};
 		{
 			if (isClass (configFile >> "CfgPatches" >> "ace_rangecard")) then
@@ -919,11 +999,15 @@ switch (toLower _class) do
 		[_independent, "I_HMG_01_support_F"] call CODI_Loadout_fnc_setBackpack;
 		[_bwfleck, "B_HMG_01_support_F"] call CODI_Loadout_fnc_setBackpack;
 		[_bwtropen, "B_HMG_01_support_F"] call CODI_Loadout_fnc_setBackpack;
+		[_usfleck, "B_HMG_01_support_F"] call CODI_Loadout_fnc_setBackpack;
+		[_ustropen, "B_HMG_01_support_F"] call CODI_Loadout_fnc_setBackpack;
 		[_blufor, "B_UavTerminal"] call CODI_Loadout_fnc_setGPS;
 		[_opfor, "O_UavTerminal"] call CODI_Loadout_fnc_setGPS;
 		[_independent, "I_UavTerminal"] call CODI_Loadout_fnc_setGPS;
 		[_bwfleck, "B_UavTerminal"] call CODI_Loadout_fnc_setGPS;
 		[_bwtropen, "B_UavTerminal"] call CODI_Loadout_fnc_setGPS;
+		[_usfleck, "B_UavTerminal"] call CODI_Loadout_fnc_setGPS;
+		[_ustropen, "B_UavTerminal"] call CODI_Loadout_fnc_setGPS;
 	};
 	case toLower "AsMortar";
 	case toLower "B_support_AMort_F";
@@ -937,6 +1021,8 @@ switch (toLower _class) do
 		[_independent, "I_Mortar_01_support_F"] call CODI_Loadout_fnc_setBackpack;
 		[_bwfleck, "B_Mortar_01_support_F"] call CODI_Loadout_fnc_setBackpack;
 		[_bwtropen, "B_Mortar_01_support_F"] call CODI_Loadout_fnc_setBackpack;
+		[_usfleck, "B_Mortar_01_support_F"] call CODI_Loadout_fnc_setBackpack;
+		[_ustropen, "B_Mortar_01_support_F"] call CODI_Loadout_fnc_setBackpack;
 	};
 	case toLower "AGMG";
 	case toLower "B_support_GMG_F";
@@ -950,11 +1036,15 @@ switch (toLower _class) do
 		[_independent, "I_GMG_01_A_weapon_F"] call CODI_Loadout_fnc_setBackpack;
 		[_bwfleck, "B_GMG_01_A_weapon_F"] call CODI_Loadout_fnc_setBackpack;
 		[_bwtropen, "B_GMG_01_A_weapon_F"] call CODI_Loadout_fnc_setBackpack;
+		[_usfleck, "B_GMG_01_A_weapon_F"] call CODI_Loadout_fnc_setBackpack;
+		[_ustropen, "B_GMG_01_A_weapon_F"] call CODI_Loadout_fnc_setBackpack;
 		[_blufor, "B_UavTerminal"] call CODI_Loadout_fnc_setGPS;
 		[_opfor, "O_UavTerminal"] call CODI_Loadout_fnc_setGPS;
 		[_independent, "I_UavTerminal"] call CODI_Loadout_fnc_setGPS;
 		[_bwfleck, "B_UavTerminal"] call CODI_Loadout_fnc_setGPS;
 		[_bwtropen, "B_UavTerminal"] call CODI_Loadout_fnc_setGPS;
+		[_usfleck, "B_UavTerminal"] call CODI_Loadout_fnc_setGPS;
+		[_ustropen, "B_UavTerminal"] call CODI_Loadout_fnc_setGPS;
 	};
 	case toLower "AHMG";
 	case toLower "B_support_MG_F";
@@ -968,11 +1058,15 @@ switch (toLower _class) do
 		[_independent, "I_HMG_01_A_weapon_F"] call CODI_Loadout_fnc_setBackpack;
 		[_bwfleck, "B_HMG_01_A_weapon_F"] call CODI_Loadout_fnc_setBackpack;
 		[_bwtropen, "B_HMG_01_A_weapon_F"] call CODI_Loadout_fnc_setBackpack;
+		[_usfleck, "B_HMG_01_A_weapon_F"] call CODI_Loadout_fnc_setBackpack;
+		[_ustropen, "B_HMG_01_A_weapon_F"] call CODI_Loadout_fnc_setBackpack;
 		[_blufor, "B_UavTerminal"] call CODI_Loadout_fnc_setGPS;
 		[_opfor, "O_UavTerminal"] call CODI_Loadout_fnc_setGPS;
 		[_independent, "I_UavTerminal"] call CODI_Loadout_fnc_setGPS;
 		[_bwfleck, "B_UavTerminal"] call CODI_Loadout_fnc_setGPS;
 		[_bwtropen, "B_UavTerminal"] call CODI_Loadout_fnc_setGPS;
+		[_usfleck, "B_UavTerminal"] call CODI_Loadout_fnc_setGPS;
+		[_ustropen, "B_UavTerminal"] call CODI_Loadout_fnc_setGPS;
 	};
 	case toLower "Mortar";
 	case toLower "B_support_Mort_F";
@@ -986,6 +1080,8 @@ switch (toLower _class) do
 		[_independent, "I_Mortar_01_weapon_F"] call CODI_Loadout_fnc_setBackpack;
 		[_bwfleck, "B_Mortar_01_weapon_F"] call CODI_Loadout_fnc_setBackpack;
 		[_bwtropen, "B_Mortar_01_weapon_F"] call CODI_Loadout_fnc_setBackpack;
+		[_usfleck, "B_Mortar_01_weapon_F"] call CODI_Loadout_fnc_setBackpack;
+		[_ustropen, "B_Mortar_01_weapon_F"] call CODI_Loadout_fnc_setBackpack;
 	};
 	case toLower "FAC";
 	case toLower "JTAC":
@@ -997,6 +1093,8 @@ switch (toLower _class) do
 		[_independent, "Laserdesignator_03"] call CODI_Loadout_fnc_setBinocular;
 		[_bwfleck, "Laserdesignator"] call CODI_Loadout_fnc_setBinocular;
 		[_bwtropen, "Laserdesignator"] call CODI_Loadout_fnc_setBinocular;
+		[_usfleck, "Laserdesignator"] call CODI_Loadout_fnc_setBinocular;
+		[_ustropen, "Laserdesignator"] call CODI_Loadout_fnc_setBinocular;
 		{
 			[_x, "Laserbatteries"] call CODI_Loadout_fnc_addBinocularAmmo;
 		}
@@ -1006,5 +1104,194 @@ switch (toLower _class) do
 		[_independent, "tf_anprc155"] call CODI_Loadout_fnc_setBackpack;
 		[_bwfleck, "tf_rt1523g_big_bwmod"] call CODI_Loadout_fnc_setBackpack;
 		[_bwtropen, "tf_rt1523g_big_bwmod_tropen"] call CODI_Loadout_fnc_setBackpack;
+		[_usfleck, "tf_rt1523g_big_bwmod"] call CODI_Loadout_fnc_setBackpack;
+		[_ustropen, "tf_rt1523g_big_bwmod_tropen"] call CODI_Loadout_fnc_setBackpack;
+	};
+	case toLower "Para";
+	case toLower "B_soldier_PG_F";
+	case toLower "O_soldier_PG_F";
+	case toLower "I_soldier_PG_F":
+	{
+		["Rifleman"] call CODI_Loadout_fnc_loadout;
+		CODI_Loadout_Class = "Para";
+		{
+			[_x, "B_Parachute"] call CODI_Loadout_fnc_setBackpack;
+			if (isClass (configFile >> "CfgPatches" >> "ACE_Parachute")) then
+			{
+				[_x, "ACE_Altimeter"] call CODI_Loadout_fnc_setWatch;
+			};
+		}
+		forEach _all;
+	};
+	case toLower "PL";
+	case toLower "B_officer_F";
+	case toLower "O_officer_F";
+	case toLower "I_officer_F":
+	{
+		["Unarmed"] call CODI_Loadout_fnc_loadout;
+		CODI_Loadout_Class = "PL";
+		[_blufor, "tf_rt1523g_big"] call CODI_Loadout_fnc_setBackpack;
+		[_opfor, "tf_mr3000"] call CODI_Loadout_fnc_setBackpack;
+		[_independent, "tf_anprc155"] call CODI_Loadout_fnc_setBackpack;
+		[_bwfleck, "tf_rt1523g_big_bwmod"] call CODI_Loadout_fnc_setBackpack;
+		[_bwtropen, "tf_rt1523g_big_bwmod_tropen"] call CODI_Loadout_fnc_setBackpack;
+		[_usfleck, "tf_rt1523g_big_bwmod"] call CODI_Loadout_fnc_setBackpack;
+		[_ustropen, "tf_rt1523g_big_bwmod_tropen"] call CODI_Loadout_fnc_setBackpack;
+		{
+			[_x, ""] call CODI_Loadout_fnc_setNV;
+			[_x, "hgun_Pistol_heavy_02_F"] call CODI_Loadout_fnc_setPistol;
+			[_x, "optic_Yorris"] call CODI_Loadout_fnc_setPistolOptic;
+			[_x, "6Rnd_45ACP_Cylinder", 4] call CODI_Loadout_fnc_addVestAmmo;
+			[_x, "6Rnd_45ACP_Cylinder"] call CODI_Loadout_fnc_addPistolAmmo;
+		}
+		forEach _all;
+		[_blufor, "H_Beret_02"] call CODI_Loadout_fnc_setHelmet;
+		[_independent, "H_Beret_blk"] call CODI_Loadout_fnc_setHelmet;
+		[_independent, "U_I_OfficerUniform"] call CODI_Loadout_fnc_setUniform;
+		[_opfor, "H_Beret_blk"] call CODI_Loadout_fnc_setHelmet;
+		[_opfor, "U_O_OfficerUniform_ocamo"] call CODI_Loadout_fnc_setUniform;
+		[_bwfleck, "H_Beret_02"] call CODI_Loadout_fnc_setHelmet;
+		[_bwtropen, "H_Beret_02"] call CODI_Loadout_fnc_setHelmet;
+		[_usfleck, "H_Beret_02"] call CODI_Loadout_fnc_setHelmet;
+		[_ustropen, "H_Beret_02"] call CODI_Loadout_fnc_setHelmet;
+	};
+	case toLower "Pilot";
+	case toLower "B_Pilot_F";
+	case toLower "O_Pilot_F";
+	case toLower "I_Pilot_F":
+	{
+		["Unarmed"] call CODI_Loadout_fnc_loadout;
+		CODI_Loadout_Class = "Pilot";
+		{
+			[_x, "B_Parachute"] call CODI_Loadout_fnc_setBackpack;
+			[_x, "V_PlateCarrier1_blk"] call CODI_Loadout_fnc_setVest;
+			[_x, "SMG_01_Holo_F"] call CODI_Loadout_fnc_setRifle;
+			[_x, "optic_Holosight_smg"] call CODI_Loadout_fnc_setRifleOptic;
+			[_x, "muzzle_snds_acp"] call CODI_Loadout_fnc_setRifleSilencer;
+			[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow"] call CODI_Loadout_fnc_addRifleAmmo;
+			[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow", 4] call CODI_Loadout_fnc_addVestAmmo;
+		}
+		forEach _all;
+		[_blufor, "H_PilotHelmetFighter_B"] call CODI_Loadout_fnc_setHelmet;
+		[_blufor, "U_B_pilotCoveralls"] call CODI_Loadout_fnc_setUniform;
+		[_opfor, "H_PilotHelmetFighter_O"] call CODI_Loadout_fnc_setHelmet;
+		[_opfor, "U_O_pilotCoveralls"] call CODI_Loadout_fnc_setUniform;
+		[_independent, "H_PilotHelmetFighter_I"] call CODI_Loadout_fnc_setHelmet;
+		[_independent, "U_I_pilotCoveralls"] call CODI_Loadout_fnc_setUniform;
+		[_bwfleck, "H_PilotHelmetFighter_B"] call CODI_Loadout_fnc_setHelmet;
+		[_bwfleck, "U_B_pilotCoveralls"] call CODI_Loadout_fnc_setUniform;
+		[_bwtropen, "H_PilotHelmetFighter_B"] call CODI_Loadout_fnc_setHelmet;
+		[_bwtropen, "U_B_pilotCoveralls"] call CODI_Loadout_fnc_setUniform;
+		[_usfleck, "H_PilotHelmetFighter_B"] call CODI_Loadout_fnc_setHelmet;
+		[_usfleck, "U_B_pilotCoveralls"] call CODI_Loadout_fnc_setUniform;
+		[_ustropen, "H_PilotHelmetFighter_B"] call CODI_Loadout_fnc_setHelmet;
+		[_ustropen, "U_B_pilotCoveralls"] call CODI_Loadout_fnc_setUniform;
+	};
+	case toLower "Helipilot";
+	case toLower "B_Helipilot_F";
+	case toLower "O_Helipilot_F";
+	case toLower "I_Helipilot_F":
+	{
+		["Unarmed"] call CODI_Loadout_fnc_loadout;
+		CODI_Loadout_Class = "Helipilot";
+		{
+			[_x, "ToolKit"] call CODI_Loadout_fnc_addBackpackItem;
+			[_x, "V_PlateCarrier1_blk"] call CODI_Loadout_fnc_setVest;
+			[_x, "SMG_01_Holo_F"] call CODI_Loadout_fnc_setRifle;
+			[_x, "optic_Holosight_smg"] call CODI_Loadout_fnc_setRifleOptic;
+			[_x, "muzzle_snds_acp"] call CODI_Loadout_fnc_setRifleSilencer;
+			[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow"] call CODI_Loadout_fnc_addRifleAmmo;
+			[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow", 4] call CODI_Loadout_fnc_addVestAmmo;
+		}
+		forEach _all;
+		[_blufor, "H_PilotHelmetHeli_B"] call CODI_Loadout_fnc_setHelmet;
+		[_blufor, "U_B_HeliPilotCoveralls"] call CODI_Loadout_fnc_setUniform;
+		[_opfor, "H_PilotHelmetHeli_O"] call CODI_Loadout_fnc_setHelmet;
+		[_opfor, "U_O_HeliPilotCoveralls"] call CODI_Loadout_fnc_setUniform;
+		[_independent, "H_PilotHelmetHeli_I"] call CODI_Loadout_fnc_setHelmet;
+		[_independent, "U_I_HeliPilotCoveralls"] call CODI_Loadout_fnc_setUniform;
+		[_bwfleck, "H_PilotHelmetHeli_B"] call CODI_Loadout_fnc_setHelmet;
+		[_bwfleck, "U_B_HeliPilotCoveralls"] call CODI_Loadout_fnc_setUniform;
+		[_bwtropen, "H_PilotHelmetHeli_B"] call CODI_Loadout_fnc_setHelmet;
+		[_bwtropen, "U_B_HeliPilotCoveralls"] call CODI_Loadout_fnc_setUniform;
+		[_usfleck, "H_PilotHelmetHeli_B"] call CODI_Loadout_fnc_setHelmet;
+		[_usfleck, "U_B_HeliPilotCoveralls"] call CODI_Loadout_fnc_setUniform;
+		[_ustropen, "H_PilotHelmetHeli_B"] call CODI_Loadout_fnc_setHelmet;
+		[_ustropen, "U_B_HeliPilotCoveralls"] call CODI_Loadout_fnc_setUniform;
+	};
+	case toLower "Helicrew";
+	case toLower "B_helicrew_F";
+	case toLower "O_helicrew_F";
+	case toLower "I_helicrew_F":
+	{
+		["Unarmed"] call CODI_Loadout_fnc_loadout;
+		CODI_Loadout_Class = "Helicrew";
+		{
+			[_x, "ToolKit"] call CODI_Loadout_fnc_addBackpackItem;
+			[_x, "V_PlateCarrier1_blk"] call CODI_Loadout_fnc_setVest;
+			[_x, "SMG_01_Holo_F"] call CODI_Loadout_fnc_setRifle;
+			[_x, "optic_Holosight_smg"] call CODI_Loadout_fnc_setRifleOptic;
+			[_x, "muzzle_snds_acp"] call CODI_Loadout_fnc_setRifleSilencer;
+			[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow"] call CODI_Loadout_fnc_addRifleAmmo;
+			[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow", 4] call CODI_Loadout_fnc_addVestAmmo;
+		}
+		forEach _all;
+		[_blufor, "H_CrewHelmetHeli_B"] call CODI_Loadout_fnc_setHelmet;
+		[_blufor, "U_B_HeliPilotCoveralls"] call CODI_Loadout_fnc_setUniform;
+		[_opfor, "H_CrewHelmetHeli_O"] call CODI_Loadout_fnc_setHelmet;
+		[_opfor, "U_O_HeliPilotCoveralls"] call CODI_Loadout_fnc_setUniform;
+		[_independent, "H_CrewHelmetHeli_I"] call CODI_Loadout_fnc_setHelmet;
+		[_independent, "U_I_HeliPilotCoveralls"] call CODI_Loadout_fnc_setUniform;
+		[_bwfleck, "H_CrewHelmetHeli_B"] call CODI_Loadout_fnc_setHelmet;
+		[_bwfleck, "U_B_HeliPilotCoveralls"] call CODI_Loadout_fnc_setUniform;
+		[_bwtropen, "H_CrewHelmetHeli_B"] call CODI_Loadout_fnc_setHelmet;
+		[_bwtropen, "U_B_HeliPilotCoveralls"] call CODI_Loadout_fnc_setUniform;
+		[_usfleck, "H_CrewHelmetHeli_B"] call CODI_Loadout_fnc_setHelmet;
+		[_usfleck, "U_B_HeliPilotCoveralls"] call CODI_Loadout_fnc_setUniform;
+		[_ustropen, "H_CrewHelmetHeli_B"] call CODI_Loadout_fnc_setHelmet;
+		[_ustropen, "U_B_HeliPilotCoveralls"] call CODI_Loadout_fnc_setUniform;
+	};
+	case toLower "Crew";
+	case toLower "B_crew_F";
+	case toLower "O_crew_F";
+	case toLower "I_crew_F":
+	{
+		["Unarmed"] call CODI_Loadout_fnc_loadout;
+		CODI_Loadout_Class = "Crew";
+		{
+			[_x, "ToolKit"] call CODI_Loadout_fnc_addBackpackItem;
+			[_x, "SMG_01_Holo_F"] call CODI_Loadout_fnc_setRifle;
+			[_x, "optic_Holosight_smg"] call CODI_Loadout_fnc_setRifleOptic;
+			[_x, "muzzle_snds_acp"] call CODI_Loadout_fnc_setRifleSilencer;
+			[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow"] call CODI_Loadout_fnc_addRifleAmmo;
+			[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow", 4] call CODI_Loadout_fnc_addVestAmmo;
+		}
+		forEach _all;
+		[_blufor, "H_HelmetCrew_B"] call CODI_Loadout_fnc_setHelmet;
+		[_opfor, "H_HelmetCrew_O"] call CODI_Loadout_fnc_setHelmet;
+		[_independent, "H_HelmetCrew_I"] call CODI_Loadout_fnc_setHelmet;
+		[_bwfleck, "H_HelmetCrew_B"] call CODI_Loadout_fnc_setHelmet;
+		[_bwtropen, "H_HelmetCrew_B"] call CODI_Loadout_fnc_setHelmet;
+		[_usfleck, "H_HelmetCrew_B"] call CODI_Loadout_fnc_setHelmet;
+		[_ustropen, "H_HelmetCrew_B"] call CODI_Loadout_fnc_setHelmet;
+	};
+	case toLower "Light";
+	case toLower "B_Soldier_lite_F";
+	case toLower "O_Soldier_lite_F";
+	case toLower "I_Soldier_lite_F":
+	{
+		["Rifleman"] call CODI_Loadout_fnc_loadout;
+		CODI_Loadout_Class = "Light";
+		{
+			[_x, ""] call CODI_Loadout_fnc_setBackpack;
+			[_x, "hlc_smg_mp5sd6"] call CODI_Loadout_fnc_setRifle;
+			[_x, "optic_Holosight_smg"] call CODI_Loadout_fnc_setRifleOptic;
+			[_x, ""] call CODI_Loadout_fnc_setRifleSilencer;
+			[_x, ""] call CODI_Loadout_fnc_setRifleBipod;
+			[_x, ""] call CODI_Loadout_fnc_setRifleLaser;
+			[_x, "hlc_30Rnd_9x19_SD_MP5"] call CODI_Loadout_fnc_addRifleAmmo;
+			[_x, "hlc_30Rnd_9x19_SD_MP5", 4] call CODI_Loadout_fnc_addVestAmmo;
+		}
+		forEach _all;
 	};
 };
