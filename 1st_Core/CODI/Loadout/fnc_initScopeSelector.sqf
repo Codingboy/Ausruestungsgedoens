@@ -35,11 +35,17 @@ if (isClass (configFile >> "CfgPatches" >> "RH_acc")) then
 {
 	if (
 		((CODI_Loadout_Class == "Sniper" || CODI_Loadout_Class == "SS") && "Sniper" in (_x select 2)) ||
-		(CODI_Loadout_Class == "DM" && "DM" in (_x select 2)) ||
-		("Rifleman" in (_x select 2))
+		(CODI_Loadout_Class == "DM" && "DM" in (_x select 2))
 	) then
 	{
 		lbAdd[2100, _x select 1];
+	}
+	else
+	{
+		if ("Rifleman" in (_x select 2)) then
+		{
+			lbAdd[2100, _x select 1];
+		};
 	};
 }
 forEach CODI_Loadout_ScopeSelector_scopes;
