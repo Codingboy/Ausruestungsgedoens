@@ -258,8 +258,10 @@ switch (toLower _class) do
 		[_ustropen, "bipod_01_F_blk"] call CODI_Loadout_fnc_setRifleBipod;
 		{
 			[_x, "acc_flashlight"] call CODI_Loadout_fnc_setRifleLaser;
-			[_x, "launch_RPG32_F"] call CODI_Loadout_fnc_setLauncher;
-			[_x, "RPG32_F"] call CODI_Loadout_fnc_addLauncherAmmo;
+			[_x, "hgun_Pistol_heavy_01_F"] call CODI_Loadout_fnc_setPistol;
+			[_x, "optic_MRD"] call CODI_Loadout_fnc_setPistolOptic;
+			[_x, "muzzle_snds_acp"] call CODI_Loadout_fnc_setPistolSilencer;
+			[_x, "11Rnd_45ACP_Mag"] call CODI_Loadout_fnc_addPistolAmmo;
 		}
 		forEach _all;
 	};
@@ -1165,11 +1167,21 @@ switch (toLower _class) do
 		{
 			[_x, "B_Parachute"] call CODI_Loadout_fnc_setBackpack;
 			[_x, "V_PlateCarrier1_blk"] call CODI_Loadout_fnc_setVest;
-			[_x, "SMG_01_Holo_F"] call CODI_Loadout_fnc_setRifle;
-			[_x, "optic_Holosight_smg"] call CODI_Loadout_fnc_setRifleOptic;
-			[_x, "muzzle_snds_acp"] call CODI_Loadout_fnc_setRifleSilencer;
-			[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow"] call CODI_Loadout_fnc_addRifleAmmo;
-			[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow", 4] call CODI_Loadout_fnc_addVestAmmo;
+			if (isClass (configFile >> "CfgPatches" >> "hlcweapons_mp5")) then
+			{
+				[_x, "hlc_smg_mp5a3"] call CODI_Loadout_fnc_setRifle;
+				[_x, "muzzle_snds_L"] call CODI_Loadout_fnc_setRifleSilencer;
+				[_x, "hlc_30Rnd_9x19_GD_MP5"] call CODI_Loadout_fnc_addRifleAmmo;
+				[_x, "hlc_30Rnd_9x19_GD_MP5", 4] call CODI_Loadout_fnc_addVestAmmo;
+			}
+			else
+			{
+				[_x, "SMG_01_Holo_F"] call CODI_Loadout_fnc_setRifle;
+				[_x, "optic_Holosight_smg"] call CODI_Loadout_fnc_setRifleOptic;
+				[_x, "muzzle_snds_acp"] call CODI_Loadout_fnc_setRifleSilencer;
+				[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow"] call CODI_Loadout_fnc_addRifleAmmo;
+				[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow", 4] call CODI_Loadout_fnc_addVestAmmo;
+			};
 		}
 		forEach _all;
 		[_blufor, "H_PilotHelmetFighter_B"] call CODI_Loadout_fnc_setHelmet;
@@ -1197,11 +1209,21 @@ switch (toLower _class) do
 		{
 			[_x, "ToolKit"] call CODI_Loadout_fnc_addBackpackItem;
 			[_x, "V_PlateCarrier1_blk"] call CODI_Loadout_fnc_setVest;
-			[_x, "SMG_01_Holo_F"] call CODI_Loadout_fnc_setRifle;
-			[_x, "optic_Holosight_smg"] call CODI_Loadout_fnc_setRifleOptic;
-			[_x, "muzzle_snds_acp"] call CODI_Loadout_fnc_setRifleSilencer;
-			[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow"] call CODI_Loadout_fnc_addRifleAmmo;
-			[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow", 4] call CODI_Loadout_fnc_addVestAmmo;
+			if (isClass (configFile >> "CfgPatches" >> "hlcweapons_mp5")) then
+			{
+				[_x, "hlc_smg_mp5a3"] call CODI_Loadout_fnc_setRifle;
+				[_x, "muzzle_snds_L"] call CODI_Loadout_fnc_setRifleSilencer;
+				[_x, "hlc_30Rnd_9x19_GD_MP5"] call CODI_Loadout_fnc_addRifleAmmo;
+				[_x, "hlc_30Rnd_9x19_GD_MP5", 4] call CODI_Loadout_fnc_addVestAmmo;
+			}
+			else
+			{
+				[_x, "SMG_01_Holo_F"] call CODI_Loadout_fnc_setRifle;
+				[_x, "optic_Holosight_smg"] call CODI_Loadout_fnc_setRifleOptic;
+				[_x, "muzzle_snds_acp"] call CODI_Loadout_fnc_setRifleSilencer;
+				[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow"] call CODI_Loadout_fnc_addRifleAmmo;
+				[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow", 4] call CODI_Loadout_fnc_addVestAmmo;
+			};
 		}
 		forEach _all;
 		[_blufor, "H_PilotHelmetHeli_B"] call CODI_Loadout_fnc_setHelmet;
@@ -1228,12 +1250,21 @@ switch (toLower _class) do
 		CODI_Loadout_Class = "Helicrew";
 		{
 			[_x, "ToolKit"] call CODI_Loadout_fnc_addBackpackItem;
-			[_x, "V_PlateCarrier1_blk"] call CODI_Loadout_fnc_setVest;
-			[_x, "SMG_01_Holo_F"] call CODI_Loadout_fnc_setRifle;
-			[_x, "optic_Holosight_smg"] call CODI_Loadout_fnc_setRifleOptic;
-			[_x, "muzzle_snds_acp"] call CODI_Loadout_fnc_setRifleSilencer;
-			[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow"] call CODI_Loadout_fnc_addRifleAmmo;
-			[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow", 4] call CODI_Loadout_fnc_addVestAmmo;
+			if (isClass (configFile >> "CfgPatches" >> "hlcweapons_mp5")) then
+			{
+				[_x, "hlc_smg_mp5a3"] call CODI_Loadout_fnc_setRifle;
+				[_x, "muzzle_snds_L"] call CODI_Loadout_fnc_setRifleSilencer;
+				[_x, "hlc_30Rnd_9x19_GD_MP5"] call CODI_Loadout_fnc_addRifleAmmo;
+				[_x, "hlc_30Rnd_9x19_GD_MP5", 4] call CODI_Loadout_fnc_addVestAmmo;
+			}
+			else
+			{
+				[_x, "SMG_01_Holo_F"] call CODI_Loadout_fnc_setRifle;
+				[_x, "optic_Holosight_smg"] call CODI_Loadout_fnc_setRifleOptic;
+				[_x, "muzzle_snds_acp"] call CODI_Loadout_fnc_setRifleSilencer;
+				[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow"] call CODI_Loadout_fnc_addRifleAmmo;
+				[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow", 4] call CODI_Loadout_fnc_addVestAmmo;
+			};
 		}
 		forEach _all;
 		[_blufor, "H_CrewHelmetHeli_B"] call CODI_Loadout_fnc_setHelmet;
@@ -1260,11 +1291,21 @@ switch (toLower _class) do
 		CODI_Loadout_Class = "Crew";
 		{
 			[_x, "ToolKit"] call CODI_Loadout_fnc_addBackpackItem;
-			[_x, "SMG_01_Holo_F"] call CODI_Loadout_fnc_setRifle;
-			[_x, "optic_Holosight_smg"] call CODI_Loadout_fnc_setRifleOptic;
-			[_x, "muzzle_snds_acp"] call CODI_Loadout_fnc_setRifleSilencer;
-			[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow"] call CODI_Loadout_fnc_addRifleAmmo;
-			[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow", 4] call CODI_Loadout_fnc_addVestAmmo;
+			if (isClass (configFile >> "CfgPatches" >> "hlcweapons_mp5")) then
+			{
+				[_x, "hlc_smg_mp5a3"] call CODI_Loadout_fnc_setRifle;
+				[_x, "muzzle_snds_L"] call CODI_Loadout_fnc_setRifleSilencer;
+				[_x, "hlc_30Rnd_9x19_GD_MP5"] call CODI_Loadout_fnc_addRifleAmmo;
+				[_x, "hlc_30Rnd_9x19_GD_MP5", 4] call CODI_Loadout_fnc_addVestAmmo;
+			}
+			else
+			{
+				[_x, "SMG_01_Holo_F"] call CODI_Loadout_fnc_setRifle;
+				[_x, "optic_Holosight_smg"] call CODI_Loadout_fnc_setRifleOptic;
+				[_x, "muzzle_snds_acp"] call CODI_Loadout_fnc_setRifleSilencer;
+				[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow"] call CODI_Loadout_fnc_addRifleAmmo;
+				[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow", 4] call CODI_Loadout_fnc_addVestAmmo;
+			};
 		}
 		forEach _all;
 		[_blufor, "H_HelmetCrew_B"] call CODI_Loadout_fnc_setHelmet;
@@ -1284,13 +1325,24 @@ switch (toLower _class) do
 		CODI_Loadout_Class = "Light";
 		{
 			[_x, ""] call CODI_Loadout_fnc_setBackpack;
-			[_x, "hlc_smg_mp5sd6"] call CODI_Loadout_fnc_setRifle;
-			[_x, "optic_Holosight_smg"] call CODI_Loadout_fnc_setRifleOptic;
-			[_x, ""] call CODI_Loadout_fnc_setRifleSilencer;
 			[_x, ""] call CODI_Loadout_fnc_setRifleBipod;
 			[_x, ""] call CODI_Loadout_fnc_setRifleLaser;
-			[_x, "hlc_30Rnd_9x19_SD_MP5"] call CODI_Loadout_fnc_addRifleAmmo;
-			[_x, "hlc_30Rnd_9x19_SD_MP5", 4] call CODI_Loadout_fnc_addVestAmmo;
+			if (isClass (configFile >> "CfgPatches" >> "hlcweapons_mp5")) then
+			{
+				[_x, "hlc_smg_mp5sd6"] call CODI_Loadout_fnc_setRifle;
+				[_x, "optic_Holosight_smg"] call CODI_Loadout_fnc_setRifleOptic;
+				[_x, ""] call CODI_Loadout_fnc_setRifleSilencer;
+				[_x, "hlc_30Rnd_9x19_SD_MP5"] call CODI_Loadout_fnc_addRifleAmmo;
+				[_x, "hlc_30Rnd_9x19_SD_MP5", 4] call CODI_Loadout_fnc_addVestAmmo;
+			}
+			else
+			{
+				[_x, "SMG_01_Holo_F"] call CODI_Loadout_fnc_setRifle;
+				[_x, "optic_Holosight_smg"] call CODI_Loadout_fnc_setRifleOptic;
+				[_x, "muzzle_snds_acp"] call CODI_Loadout_fnc_setRifleSilencer;
+				[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow"] call CODI_Loadout_fnc_addRifleAmmo;
+				[_x, "30Rnd_45ACP_Mag_SMG_01_Tracer_Yellow", 4] call CODI_Loadout_fnc_addVestAmmo;
+			};
 		}
 		forEach _all;
 	};
