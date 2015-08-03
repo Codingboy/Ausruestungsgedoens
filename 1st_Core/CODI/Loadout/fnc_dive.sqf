@@ -31,11 +31,7 @@ switch (side _unit) do
 		_unit addGoggles "G_I_Diving";
 	};
 };
-while {vest _unit != "" && ((getPosASL _unit) select 2) >= 0} do
-{
-	sleep 10;
-};
-while {vest _unit != "" && ((getPosASL _unit) select 2) < 0} do
+while {vest _unit != ""} do
 {
 	sleep 10;
 };
