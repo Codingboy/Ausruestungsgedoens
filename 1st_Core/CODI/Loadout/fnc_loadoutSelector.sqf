@@ -30,6 +30,14 @@ switch (_side) do
 	{
 		_sideInt = 4;
 	};
+	case "US (marpat wd)":
+	{
+		_sideInt = 5;
+	};
+	case "US (marpat d)":
+	{
+		_sideInt = 6;
+	};
 };
 [] call CODI_Loadout_fnc_reset;
 [_class] call CODI_Loadout_fnc_loadout;

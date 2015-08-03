@@ -1,7 +1,7 @@
 {
 	lbAdd[2100, _x];
 }
-forEach ["NATO","CSAT","AAF","BW (flecktarn)","BW (tropentarn)"];
+forEach ["NATO","CSAT","AAF","BW (flecktarn)","BW (tropentarn)","US (marpat wd)","US (marpat d)"];
 {
 	lbAdd[2101, _x];
 }
