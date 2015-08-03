@@ -20,7 +20,7 @@ if (hasInterface) then
 	{
 		[] call CODI_Loadout_fnc_reset;
 		[player getVariable["CODI_Loadout_Class", typeOf player]] call CODI_Loadout_fnc_loadout;
-		[player, CODI_Loadout_Faction, true, true, (toLower(typeOf player)) in [toLower "B_medic_F",toLower "O_medic_F",toLower "I_medic_F"], true, true] call CODI_Loadout_fnc_equip;
+		[player, CODI_Loadout_Faction, false, false, (toLower(typeOf player)) in [toLower "B_medic_F",toLower "O_medic_F",toLower "I_medic_F",toLower "B_recon_medic_F",toLower "O_recon_medic_F"], true, (toLower(typeOf player)) in [toLower "O_Pilot_F",toLower "I_pilot_F",toLower "B_pilot_F"]] call CODI_Loadout_fnc_equip;
 	};
 	player addRating 99999999;
 	player addMPEventHandler["MPRespawn", {
@@ -29,7 +29,7 @@ if (hasInterface) then
 		{
 			[] call CODI_Loadout_fnc_reset;
 			[player getVariable["CODI_Loadout_Class", typeOf player]] call CODI_Loadout_fnc_loadout;
-			[player, CODI_Loadout_Faction, true, true, (toLower(typeOf player)) == (toLower "B_medic_F"), true, true] call CODI_Loadout_fnc_equip;
+			[player, CODI_Loadout_Faction, false, false, (toLower(typeOf player)) in [toLower "B_medic_F",toLower "O_medic_F",toLower "I_medic_F",toLower "B_recon_medic_F",toLower "O_recon_medic_F"], true, (toLower(typeOf player)) in [toLower "O_Pilot_F",toLower "I_pilot_F",toLower "B_pilot_F"]] call CODI_Loadout_fnc_equip;
 		};
 	}];
 	if (CODI_Loadout_SupplyDrop) then
@@ -39,7 +39,7 @@ if (hasInterface) then
 	["CODI_Loadout_AllInOne",0,{
 		[] call CODI_Loadout_fnc_reset;
 		[player getVariable["CODI_Loadout_Class", typeOf player]] call CODI_Loadout_fnc_loadout;
-		[player, CODI_Loadout_Faction, true, true, (toLower(typeOf player)) == (toLower "B_medic_F"), true, true] call CODI_Loadout_fnc_equip;
+		[player, CODI_Loadout_Faction, false, false, (toLower(typeOf player)) in [toLower "B_medic_F",toLower "O_medic_F",toLower "I_medic_F",toLower "B_recon_medic_F",toLower "O_recon_medic_F"], true, (toLower(typeOf player)) in [toLower "O_Pilot_F",toLower "I_pilot_F",toLower "B_pilot_F"]] call CODI_Loadout_fnc_equip;
 	},[],{true},"Ausrüsten","\a3\ui_f\data\IGUI\Cfg\Actions\eject_ca.paa", 5] call CODI_Loadout_fnc_interact;
 	["CODI_Loadout_AllInOne",0,{CODI_Loadout_va = true; publicVariable "CODI_Loadout_va";},[],{!CODI_Loadout_va && (getPlayerUID player == '76561197961486247' || getPlayerUID player == '76561197996296785' || getPlayerUID player == '_SP_PLAYER_' || serverCommandAvailable '#kick')},"Enable VA","\a3\ui_f\data\IGUI\Cfg\Actions\eject_ca.paa", 5] call CODI_Loadout_fnc_interact;
 	["CODI_Loadout_AllInOne",0,{CODI_Loadout_va = false; publicVariable "CODI_Loadout_va";},[],{CODI_Loadout_va && (getPlayerUID player == '76561197961486247' || getPlayerUID player == '76561197996296785' || getPlayerUID player == '_SP_PLAYER_' || serverCommandAvailable '#kick')},"Disable VA","\a3\ui_f\data\IGUI\Cfg\Actions\eject_ca.paa", 5] call CODI_Loadout_fnc_interact;
@@ -52,6 +52,8 @@ if (hasInterface) then
 	["CODI_Loadout_AllInOne",0,{createdialog 'CODI_Loadout_ScopeSelector';},[],{CODI_Loadout_ss},"Scope Wählen","\a3\ui_f\data\IGUI\Cfg\Actions\eject_ca.paa", 5] call CODI_Loadout_fnc_interact;
 	["CODI_Loadout_AllInOne",0,{['Open',true] spawn BIS_fnc_arsenal;},[],{CODI_Loadout_va},"Virtual Arsenal","\a3\ui_f\data\IGUI\Cfg\Actions\eject_ca.paa", 5] call CODI_Loadout_fnc_interact;
 	["CODI_Loadout_AllInOne",0,{["forced"] spawn CSSA3_fnc_createSpectateDialog;},[],{true},"Zusehen","\a3\ui_f\data\IGUI\Cfg\Actions\eject_ca.paa", 5] call CODI_Loadout_fnc_interact;
+	["CODI_Loadout_AllInOne",0,{[player, CODI_Loadout_Faction] call CODI_Loadout_fnc_equipSilencer;},[],{true},"Silencer","\a3\ui_f\data\IGUI\Cfg\Actions\eject_ca.paa", 5] call CODI_Loadout_fnc_interact;
+	["CODI_Loadout_AllInOne",0,{[player, CODI_Loadout_Faction] call CODI_Loadout_fnc_equipNV;},[],{true},"NV","\a3\ui_f\data\IGUI\Cfg\Actions\eject_ca.paa", 5] call CODI_Loadout_fnc_interact;
 	
 	TF_speak_volume_level = "whispering";
 	TF_speak_volume_meters = 5;

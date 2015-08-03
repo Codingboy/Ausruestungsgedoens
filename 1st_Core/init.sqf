@@ -341,6 +341,8 @@ CODI_Loadout_fnc_equip = compile preprocessFileLineNumbers "\1st_Core\CODI\Loado
 Commander_fnc_supplyDrop = compile preprocessFileLineNumbers "\1st_Core\Commander\supply_drop.sqf";
 CODI_Loadout_fnc_initAllInOne = compile preprocessFileLineNumbers "\1st_Core\CODI\Loadout\fnc_initAllInOne.sqf";
 CODI_Loadout_fnc_equipScope = compile preprocessFileLineNumbers "\1st_Core\CODI\Loadout\fnc_equipScope.sqf";
+CODI_Loadout_fnc_equipNV = compile preprocessFileLineNumbers "\1st_Core\CODI\Loadout\fnc_equipNV.sqf";
+CODI_Loadout_fnc_equipSilencer = compile preprocessFileLineNumbers "\1st_Core\CODI\Loadout\fnc_equipSilencer.sqf";
 
 if (isServer) then
 {
