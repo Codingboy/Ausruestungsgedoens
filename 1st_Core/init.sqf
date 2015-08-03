@@ -1,4 +1,3 @@
-//[] call compile preprocessFileLineNumbers "CSSA3\CSSA3_init.sqf";
 KK_fnc_push =
 {
 	_this select 0 pushBack (_this select 1);

@@ -15,6 +15,7 @@ class CfgPatches
 
 #include "CODI\Dialogs.hpp"
 #include "CODI\Loadout\Dialogs.hpp"
+#include "CSSA3\CSSA3_header.hpp"
 
 class Extended_PreInit_EventHandlers
 {
