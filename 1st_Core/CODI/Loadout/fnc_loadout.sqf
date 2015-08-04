@@ -363,9 +363,9 @@ switch (toLower _class) do
 		{
 			[_x] call CODI_Loadout_fnc_clearRifleAmmo;
 			[_x] call CODI_Loadout_fnc_clearVestAmmo;
-			[_x, "rhs_weap_m240B_CAP"] call CODI_Loadout_fnc_setRifle;
-			[_x, "rhsusf_100Rnd_762x51_m80a1epr"] call CODI_Loadout_fnc_addRifleAmmo;
-			[_x, "rhsusf_100Rnd_762x51_m80a1epr", 4] call CODI_Loadout_fnc_addBackpackAmmo;
+			[_x, "hlc_lmg_M60E4"] call CODI_Loadout_fnc_setRifle;
+			[_x, "hlc_100Rnd_762x51_T_M60E4"] call CODI_Loadout_fnc_addRifleAmmo;
+			[_x, "hlc_100Rnd_762x51_T_M60E4", 4] call CODI_Loadout_fnc_addBackpackAmmo;
 			if (isClass (configFile >> "CfgPatches" >> "ace_overheating")) then
 			{
 				[_x, "ACE_SpareBarrel", 1] call CODI_Loadout_fnc_addBackpackItem;
@@ -533,8 +533,8 @@ switch (toLower _class) do
 		};
 		if (isClass (configFile >> "CfgPatches" >> "hlcweapons_g3")) then
 		{
-			[_bwfleck, "srifle_DMR_03_F"] call CODI_Loadout_fnc_setRifle;
-			[_bwtropen, "srifle_DMR_03_tan_F"] call CODI_Loadout_fnc_setRifle;
+			[_bwfleck, "hlc_rifle_g3ka4"] call CODI_Loadout_fnc_setRifle;
+			[_bwtropen, "hlc_rifle_g3ka4"] call CODI_Loadout_fnc_setRifle;
 			[_bwfleck] call CODI_Loadout_fnc_clearVestAmmo;
 			[_bwtropen] call CODI_Loadout_fnc_clearRifleAmmo;
 			[_bwfleck, "hlc_20rnd_762x51_Mk316_G3"] call CODI_Loadout_fnc_addRifleAmmo;
@@ -1155,6 +1155,7 @@ switch (toLower _class) do
 			[_x, "optic_Yorris"] call CODI_Loadout_fnc_setPistolOptic;
 			[_x, "6Rnd_45ACP_Cylinder", 4] call CODI_Loadout_fnc_addVestAmmo;
 			[_x, "6Rnd_45ACP_Cylinder"] call CODI_Loadout_fnc_addPistolAmmo;
+			[_x, ""] call CODI_Loadout_fnc_setGoggles;
 		}
 		forEach _all;
 		[_blufor, "H_Beret_02"] call CODI_Loadout_fnc_setHelmet;
