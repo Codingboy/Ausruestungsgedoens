@@ -33,6 +33,8 @@ class Extended_PreInit_EventHandlers
     };
 };
 
+//class DefaultEventhandlers;
+class Default_Extended_Eventhandlers;
 class CfgVehicles
 {
 	class B_supplyCrate_F;
@@ -40,9 +42,31 @@ class CfgVehicles
 	{
 		displayName = "1st Ausrüstungskiste";
 		author = "Coding";
-		class eventHandlers 
+		class Eventhandlers : Default_Extended_Eventhandlers
 		{
 			init = "_nul = [_this select 0] execVM '\1st_Core\CODI\Loadout\fnc_initAllInOne.sqf';";
 		};
 	};
+	/*class B_Truck_01_mover_F;
+	class B_Truck_01_ammo_F : B_Truck_01_mover_F
+	{
+		class Eventhandlers : Default_Extended_Eventhandlers
+		{
+			init = "_nul = [_this select 0] execVM '\1st_Core\CODI\Support\fnc_initAmmo.sqf';";
+		};
+	};
+	class B_Truck_01_fuel_F : B_Truck_01_mover_F
+	{
+		class Eventhandlers : Default_Extended_Eventhandlers
+		{
+			init = "_nul = [_this select 0] execVM '\1st_Core\CODI\Support\fnc_initFuel.sqf';";
+		};
+	};
+	class B_Truck_01_Repair_F : B_Truck_01_mover_F
+	{
+		class Eventhandlers : Default_Extended_Eventhandlers
+		{
+			init = "_nul = [_this select 0] execVM '\1st_Core\CODI\Support\fnc_initRepair.sqf';";
+		};
+	};*/
 };
