@@ -251,8 +251,8 @@ switch (toLower _class) do
 		[_blufor, "muzzle_snds_H"] call CODI_Loadout_fnc_setRifleSilencer;
 		[_opfor, "muzzle_snds_H"] call CODI_Loadout_fnc_setRifleSilencer;
 		[_independent, "muzzle_snds_M"] call CODI_Loadout_fnc_setRifleSilencer;
-		[_usfleck, "muzzle_snds_M"] call CODI_Loadout_fnc_setRifleSilencer;
-		[_ustropen, "muzzle_snds_M"] call CODI_Loadout_fnc_setRifleSilencer;
+		[_usfleck, "rhsusf_acc_nt4_black"] call CODI_Loadout_fnc_setRifleSilencer;
+		[_ustropen, "rhsusf_acc_nt4_black"] call CODI_Loadout_fnc_setRifleSilencer;
 		[_blufor, "bipod_01_F_snd"] call CODI_Loadout_fnc_setRifleBipod;
 		[_usfleck, "bipod_01_F_blk"] call CODI_Loadout_fnc_setRifleBipod;
 		[_ustropen, "bipod_01_F_blk"] call CODI_Loadout_fnc_setRifleBipod;
