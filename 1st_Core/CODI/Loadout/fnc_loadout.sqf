@@ -102,6 +102,16 @@ switch (toLower _class) do
 			[_x, "ItemGPS"] call CODI_Loadout_fnc_setGPS;
 		}
 		forEach _all;
+		if (isClass (configFile >> "CfgPatches" >> "FETT_FatTrack")) then
+		{
+			[_blufor, "b_itemGPS_FT"] call CODI_Loadout_fnc_setGPS;
+			[_opfor, "o_itemGPS_FT"] call CODI_Loadout_fnc_setGPS;
+			[_independent, "i_itemGPS_FT"] call CODI_Loadout_fnc_setGPS;
+			[_bwfleck, "b_itemGPS_FT"] call CODI_Loadout_fnc_setGPS;
+			[_bwtropen, "b_itemGPS_FT"] call CODI_Loadout_fnc_setGPS;
+			[_usfleck, "b_itemGPS_FT"] call CODI_Loadout_fnc_setGPS;
+			[_ustropen, "b_itemGPS_FT"] call CODI_Loadout_fnc_setGPS;
+		};
 		[_bwfleck, "G_Bandanna_oli"] call CODI_Loadout_fnc_setGoggles;
 		[_bwtropen, "G_Bandanna_tan"] call CODI_Loadout_fnc_setGoggles;
 		if (isClass (configFile >> "CfgPatches" >> "ace_medical")) then
