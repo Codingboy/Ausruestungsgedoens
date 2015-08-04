@@ -13,11 +13,6 @@ if (isClass (configFile >> "CfgPatches" >> "ace_hearing")) then
 	_unit setVariable ["ACE_hasEarPlugsIn", true, true];
 };
 
-/*TF_speak_volume_level = "whispering";
-TF_speak_volume_meters = 5;
-[parseText (format[localize "STR_voice_volume", localize "STR_voice_whispering"]), 5] call TFAR_fnc_showHint;
-["OnSpeakVolume", _unit, [_unit, TF_speak_volume_meters]] call TFAR_fnc_fireEventHandlers;*/
-
 removeAllWeapons _unit;
 removeAllItems _unit;
 removeAllAssignedItems _unit;
@@ -39,16 +34,50 @@ if (CODI_Loadout_Backpack select _side != "") then
 {
 	_unit addBackpack (CODI_Loadout_Backpack select _side);
 };
+if (CODI_Loadout_Rifle select _side != "") then
+{
+	if (count(CODI_Loadout_RifleAmmo select _side) != 0) then
+	{
+		{
+			_unit addMagazine _x;
+		}
+		forEach (CODI_Loadout_RifleAmmo select _side);
+	};
+	_unit addWeapon (CODI_Loadout_Rifle select _side);
+	if (isClass (configFile >> "CfgPatches" >> "ace_safemode")) then
+	{
+		[_unit, currentWeapon _unit, currentMuzzle _unit] call ACE_SafeMode_fnc_lockSafety;
+	};
+	if (CODI_Loadout_RifleOptic select _side != "") then
+	{
+		_unit addPrimaryWeaponItem (CODI_Loadout_RifleOptic select _side);
+	};
+	if (CODI_Loadout_RifleLaser select _side != "") then
+	{
+		_unit addPrimaryWeaponItem (CODI_Loadout_RifleLaser select _side);
+	};
+	if (CODI_Loadout_RifleBipod select _side != "") then
+	{
+		_unit addPrimaryWeaponItem (CODI_Loadout_RifleBipod select _side);
+	};
+	if (_isSilenced) then
+	{
+		if (CODI_Loadout_RifleSilencer select _side != "") then
+		{
+			_unit addPrimaryWeaponItem (CODI_Loadout_RifleSilencer select _side);
+		};
+	};
+};
 if (CODI_Loadout_Pistol select _side != "") then
 {
-	_unit addWeapon (CODI_Loadout_Pistol select _side);
 	if (count(CODI_Loadout_PistolAmmo select _side) != 0) then
 	{
 		{
-			_unit addHandgunItem _x;
+			_unit addMagazine _x;
 		}
 		forEach (CODI_Loadout_PistolAmmo select _side);
 	};
+	_unit addWeapon (CODI_Loadout_Pistol select _side);
 	if (isClass (configFile >> "CfgPatches" >> "ace_safemode")) then
 	{
 		[_unit, currentWeapon _unit, currentMuzzle _unit] call ACE_SafeMode_fnc_lockSafety;
@@ -104,40 +133,6 @@ if (CODI_Loadout_Launcher select _side != "") then
 		if (CODI_Loadout_LauncherSilencer select _side != "") then
 		{
 			_unit addSecondaryWeaponItem (CODI_Loadout_LauncherSilencer select _side);
-		};
-	};
-};
-if (CODI_Loadout_Rifle select _side != "") then
-{
-	_unit addWeapon (CODI_Loadout_Rifle select _side);
-	if (count(CODI_Loadout_RifleAmmo select _side) != 0) then
-	{
-		{
-			_unit addPrimaryWeaponItem _x;
-		}
-		forEach (CODI_Loadout_RifleAmmo select _side);
-	};
-	if (isClass (configFile >> "CfgPatches" >> "ace_safemode")) then
-	{
-		[_unit, currentWeapon _unit, currentMuzzle _unit] call ACE_SafeMode_fnc_lockSafety;
-	};
-	if (CODI_Loadout_RifleOptic select _side != "") then
-	{
-		_unit addPrimaryWeaponItem (CODI_Loadout_RifleOptic select _side);
-	};
-	if (CODI_Loadout_RifleLaser select _side != "") then
-	{
-		_unit addPrimaryWeaponItem (CODI_Loadout_RifleLaser select _side);
-	};
-	if (CODI_Loadout_RifleBipod select _side != "") then
-	{
-		_unit addPrimaryWeaponItem (CODI_Loadout_RifleBipod select _side);
-	};
-	if (_isSilenced) then
-	{
-		if (CODI_Loadout_RifleSilencer select _side != "") then
-		{
-			_unit addPrimaryWeaponItem (CODI_Loadout_RifleSilencer select _side);
 		};
 	};
 };
