@@ -47,9 +47,9 @@ if (hasInterface) then
 	["CODI_Loadout_AllInOne",0,{["forced"] spawn CSSA3_fnc_createSpectateDialog;},[],{true},"Zusehen","\a3\ui_f\data\IGUI\Cfg\Actions\eject_ca.paa", 5] call CODI_Loadout_fnc_interact;
 	["CODI_Loadout_AllInOne",0,{createdialog 'CODI_Loadout_Teleport';},[],{true},"Teleport","\a3\ui_f\data\IGUI\Cfg\Actions\eject_ca.paa", 5] call CODI_Loadout_fnc_interact;
 	["CODI_Loadout_AllInOne",0,{createdialog 'CODI_Loadout_ScopeSelector';},[],{CODI_Loadout_ss},"Scope Wählen","\a3\ui_f\data\IGUI\Cfg\Actions\eject_ca.paa", 5] call CODI_Loadout_fnc_interact;
-	["CODI_Loadout_AllInOne",0,{['Open',true] spawn BIS_fnc_arsenal;},[],{CODI_Loadout_va},"Virtual Arsenal","\a3\ui_f\data\IGUI\Cfg\Actions\eject_ca.paa", 5] call CODI_Loadout_fnc_interact;
 	["CODI_Loadout_AllInOne",0,{[player, CODI_Loadout_Faction] call CODI_Loadout_fnc_equipSilencer;},[],{true},"Schalldämpfer Nehmen","\a3\ui_f\data\IGUI\Cfg\Actions\eject_ca.paa", 5] call CODI_Loadout_fnc_interact;
 	["CODI_Loadout_AllInOne",0,{[player, CODI_Loadout_Faction] call CODI_Loadout_fnc_equipNV;},[],{true},"Nachtsicht Nehmen","\a3\ui_f\data\IGUI\Cfg\Actions\eject_ca.paa", 5] call CODI_Loadout_fnc_interact;
+	["CODI_Loadout_AllInOne",0,{['Open',true] spawn BIS_fnc_arsenal;},[],{CODI_Loadout_va},"Virtual Arsenal","\a3\ui_f\data\IGUI\Cfg\Actions\eject_ca.paa", 5] call CODI_Loadout_fnc_interact;
 	["CODI_Loadout_AllInOne",0,{createdialog 'CODI_Loadout_ClassSelector';},[],{CODI_Loadout_cs},"Klasse Wählen","\a3\ui_f\data\IGUI\Cfg\Actions\eject_ca.paa", 5] call CODI_Loadout_fnc_interact;
 	["CODI_Loadout_AllInOne",0,{
 		[] call CODI_Loadout_fnc_reset;
