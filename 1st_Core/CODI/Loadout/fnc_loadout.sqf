@@ -1357,4 +1357,48 @@ switch (toLower _class) do
 		}
 		forEach _all;
 	};
+	case toLower "SS":
+	{
+		["Rifleman"] call CODI_Loadout_fnc_loadout;
+		CODI_Loadout_Class = "SS";
+		{
+			[_x, ""] call CODI_Loadout_fnc_setBackpack;
+			[_x, "bipod_01_F_blk"] call CODI_Loadout_fnc_setRifleBipod;
+			[_x, ""] call CODI_Loadout_fnc_setRifleLaser;
+			[_x, "optic_KHS_blk"] call CODI_Loadout_fnc_setRifleOptic;
+			[_x, "muzzle_snds_338_black"] call CODI_Loadout_fnc_setRifleSilencer;
+			[_x, "srifle_DMR_02_F"] call CODI_Loadout_fnc_setRifle;
+			[_x, "hlc_muzzle_Tundra"] call CODI_Loadout_fnc_setPistolSilencer;
+			[_x, "hlc_smg_mp5k"] call CODI_Loadout_fnc_setPistol;
+			[_x, "hlc_30Rnd_9x19_GD_MP5"] call CODI_Loadout_fnc_addPistolAmmo;
+			[_x, "hlc_30Rnd_9x19_GD_MP5", 3] call CODI_Loadout_fnc_addVestAmmo;
+		}
+		forEach _all;
+		{
+			[_x, "bipod_01_F_blk"] call CODI_Loadout_fnc_setRifleBipod;
+			[_x, "optic_KHS_blk"] call CODI_Loadout_fnc_setRifleOptic;
+			[_x, "muzzle_snds_338_black"] call CODI_Loadout_fnc_setRifleSilencer;
+			[_x, "srifle_DMR_02_F"] call CODI_Loadout_fnc_setRifle;
+		}
+		forEach [_ustropen,_bwtropen];
+		if (isClass (configFile >> "CfgPatches" >> "ace_vector")) then
+		{
+			[_x, "ACE_Vector"] call CODI_Loadout_fnc_setBinocular;
+		}
+		else
+		{
+			[_x, "Rangefinder"] call CODI_Loadout_fnc_setBinocular;
+		};
+		if (isClass (configFile >> "CfgPatches" >> "ace_advanced_ballistics")) then
+		{
+			if (isClass (configFile >> "CfgPatches" >> "ace_atragmx")) then
+			{
+				[_x, "ACE_ATragMX", 1] call CODI_Loadout_fnc_addVestItem;
+			};
+			if (isClass (configFile >> "CfgPatches" >> "ace_kestrel4500")) then
+			{
+				[_x, "ACE_Kestrel4500", 1] call CODI_Loadout_fnc_addVestItem;
+			};
+		};
+	};
 };
