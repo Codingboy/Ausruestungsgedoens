@@ -15,6 +15,7 @@ _map = [
 	["AsHMG","Assisting Heavy Machine Gun"],
 	["AsLMG","Assisting Light Machine Gun"],
 	["AsMMG","Assisting Medium Machine Gun"],
+	["CFR","Combat First Responder"],
 	["Crew","Crew"],
 	["DM","Designated Marksman"],
 	["Eng","Engineer"],

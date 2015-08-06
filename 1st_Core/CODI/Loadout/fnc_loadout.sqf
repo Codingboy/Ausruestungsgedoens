@@ -435,6 +435,37 @@ switch (toLower _class) do
 	case toLower "B_medic_F";
 	case toLower "O_medic_F";
 	case toLower "I_medic_F";
+	case toLower "CFR":
+	{
+		["Rifleman"] call CODI_Loadout_fnc_loadout;
+		CODI_Loadout_Class = "Medic";
+		if (isClass (configFile >> "CfgPatches" >> "BW_Bags")) then
+		{
+			[_bwfleck, "seesack_fleck_m"] call CODI_Loadout_fnc_setBackpack;
+			[_bwtropen, "seesack_tropen_m"] call CODI_Loadout_fnc_setBackpack;
+			[_usfleck, "seesack_fleck_m"] call CODI_Loadout_fnc_setBackpack;
+			[_ustropen, "seesack_tropen_m"] call CODI_Loadout_fnc_setBackpack;
+		};
+		{
+			if (isClass (configFile >> "CfgPatches" >> "ace_medical")) then
+			{
+				[_x, "ACE_morphine", 10] call CODI_Loadout_fnc_addBackpackItem;
+				[_x, "ACE_epinephrine", 10] call CODI_Loadout_fnc_addBackpackItem;
+				[_x, "ACE_salineIV", 5] call CODI_Loadout_fnc_addBackpackItem;
+				[_x, "ACE_salineIV_500", 5] call CODI_Loadout_fnc_addBackpackItem;
+				[_x, "ACE_salineIV_250", 5] call CODI_Loadout_fnc_addBackpackItem;
+				[_x, "ACE_surgicalKit", 1] call CODI_Loadout_fnc_addBackpackItem;
+				[_x, "ACE_personalAidKit", 1] call CODI_Loadout_fnc_addBackpackItem;
+				[_x, "ACE_quikclot", 30] call CODI_Loadout_fnc_addBackpackItem;
+			}
+			else
+			{
+				[_x, "FirstAidKit", 15] call CODI_Loadout_fnc_addBackpackItem;
+				[_x, "Medikit", 1] call CODI_Loadout_fnc_addBackpackItem;
+			};
+		}
+		forEach _all;
+	};
 	case toLower "Medic":
 	{
 		["Rifleman"] call CODI_Loadout_fnc_loadout;
@@ -453,11 +484,10 @@ switch (toLower _class) do
 				[_x, "ACE_epinephrine", 20] call CODI_Loadout_fnc_addBackpackItem;
 				[_x, "ACE_packingBandage", 25] call CODI_Loadout_fnc_addBackpackItem;
 				[_x, "ACE_elasticBandage", 25] call CODI_Loadout_fnc_addBackpackItem;
-				//[_x, "ACE_atropine", 5] call CODI_Loadout_fnc_addBackpackItem;
+				[_x, "ACE_atropine", 5] call CODI_Loadout_fnc_addBackpackItem;
 				[_x, "ACE_salineIV", 20] call CODI_Loadout_fnc_addBackpackItem;
 				[_x, "ACE_surgicalKit", 1] call CODI_Loadout_fnc_addBackpackItem;
 				[_x, "ACE_personalAidKit", 1] call CODI_Loadout_fnc_addBackpackItem;
-				[_x, "ACE_quikclot", 10] call CODI_Loadout_fnc_addBackpackItem;
 			}
 			else
 			{
