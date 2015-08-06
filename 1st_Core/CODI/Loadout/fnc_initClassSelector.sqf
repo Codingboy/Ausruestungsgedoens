@@ -32,7 +32,7 @@ _map = [
 	["Medic","Medic"],
 	["MMG","Medium Machine Gun"],
 	["Mortar","Mortar"],
-	["Para","Para"],
+	["Para","Paratrooper"],
 	["Pilot","Pilot"],
 	["PL","Platoon Lead"],
 	["Rifleman","Rifleman"],
@@ -40,7 +40,7 @@ _map = [
 	["Sniper","Sniper"],
 	["Spotter","Spotter"],
 	["SS","Sharpshooter"],
-	["UAV","Unmanned Air Vehicle"],
+	["UAV","Unmanned Aerial Vehicle"],
 	["Unarmed","Unarmed"]
 ];
 {
