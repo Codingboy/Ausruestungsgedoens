@@ -9,9 +9,9 @@ if (!(_ammo == "SmokeShellYellow" OR _ammo == "SmokeShellBlue")) exitWith{};
 
 hint "Supply angefordert";
 
-_heli = createVehicle ["B_Heli_Transport_03_unarmed_F", getMarkerPos "helim", [], 0, "FLY"];
+_heli = createVehicle ["B_Heli_Transport_03_unarmed_F", getMarkerPos "respawn_west", [], 0, "FLY"];
 _group = createGroup independent;
-_pilot = _group createUnit ["I_helipilot_F", getMarkerPos "helim", [], 0, "FORM"];
+_pilot = _group createUnit ["I_helipilot_F", getMarkerPos "respawn_west", [], 0, "FORM"];
 _pilot moveInDriver _heli;
 _pilot allowFleeing 0;
 sleep 10;
@@ -19,7 +19,7 @@ _projectilePos = getPos _projectile;
 _wp = (group _heli) addWaypoint [_projectilePos, 0];
 _wp setWaypointCompletionRadius 1;
 //_wp = [group _heli, 0] setWaypointCombatMode "BLUE";
-_wp1 = (group _heli) addWaypoint [getMarkerPos "helim", 0];
+_wp1 = (group _heli) addWaypoint [getMarkerPos "respawn_west", 0];
 _dis = 1000;
 while {_dis > 250} do
 {
