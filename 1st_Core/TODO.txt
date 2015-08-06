@@ -1,9 +1,7 @@
 AUG
 M14
-M60 ?
 
 Afghanen
-Österreich
 Opfor überarbeiten (Leights opfor pack) ?
 Private Military (random)
 Moderne Afrikaner (AUG)
@@ -11,6 +9,3 @@ Kack Afrikaner (FAL)
 Russkis
 
 ammoschlepper
-SS
-
-classselection namen erweitern
