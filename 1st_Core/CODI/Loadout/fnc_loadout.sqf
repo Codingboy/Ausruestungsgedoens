@@ -553,6 +553,8 @@ switch (toLower _class) do
 			[_independent, "srifle_DMR_03_F"] call CODI_Loadout_fnc_setRifle;
 			[_bwfleck, "srifle_DMR_03_F"] call CODI_Loadout_fnc_setRifle;
 			[_bwtropen, "srifle_DMR_03_tan_F"] call CODI_Loadout_fnc_setRifle;
+			[_usfleck, "srifle_DMR_03_F"] call CODI_Loadout_fnc_setRifle;
+			[_ustropen, "srifle_DMR_03_tan_F"] call CODI_Loadout_fnc_setRifle;
 		}
 		else
 		{
@@ -566,6 +568,8 @@ switch (toLower _class) do
 			[_bwfleck, "hlc_rifle_g3ka4"] call CODI_Loadout_fnc_setRifle;
 			[_bwtropen, "hlc_rifle_g3ka4"] call CODI_Loadout_fnc_setRifle;
 			[_bwfleck] call CODI_Loadout_fnc_clearVestAmmo;
+			[_bwfleck] call CODI_Loadout_fnc_clearRifleAmmo;
+			[_bwtropen] call CODI_Loadout_fnc_clearVestAmmo;
 			[_bwtropen] call CODI_Loadout_fnc_clearRifleAmmo;
 			[_bwfleck, "hlc_20rnd_762x51_Mk316_G3"] call CODI_Loadout_fnc_addRifleAmmo;
 			[_bwtropen, "hlc_20rnd_762x51_Mk316_G3"] call CODI_Loadout_fnc_addRifleAmmo;
@@ -1368,6 +1372,8 @@ switch (toLower _class) do
 			[_x, ""] call CODI_Loadout_fnc_setBackpack;
 			[_x, ""] call CODI_Loadout_fnc_setRifleBipod;
 			[_x, ""] call CODI_Loadout_fnc_setRifleLaser;
+			[_x] call CODI_Loadout_fnc_clearVestAmmo;
+			[_x] call CODI_Loadout_fnc_clearRifleAmmo;
 			if (isClass (configFile >> "CfgPatches" >> "hlcweapons_mp5")) then
 			{
 				[_x, "hlc_smg_mp5sd6"] call CODI_Loadout_fnc_setRifle;
