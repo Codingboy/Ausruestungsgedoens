@@ -1,9 +1,8 @@
-private["_map"];
 {
 	lbAdd[2100, _x];
 }
 forEach ["NATO","CSAT","AAF","BW (flecktarn)","BW (tropentarn)","US (marpat wd)","US (marpat d)"];
-_map = [
+CODI_Loadout_Internal_ClassTextMap = [
 	["AA","Anti Air"],
 	["AsAGMG","Assisting Autonomous Grenade Machine Gun"],
 	["AsAHMG","Assisting Autonomous Heavy Machine Gun"],
@@ -47,54 +46,8 @@ _map = [
 {
 	lbAdd[2101, _x select 1];
 }
-forEach _map;
-/*[
-"AA",
-"AsAGMG",
-"AsAHMG",
-//"AAR",
-"AGMG",
-"AHMG",
-"AsMortar",
-"AT",
-"AsAA",
-"AsAT",
-"AsHMG",
-"AsLMG",
-"AsMMG",
-"Crew",
-//"Diver",
-//"DiverExp",
-//"DiverFTL",
-"DM",
-"Eng",
-"ExSpec",
-"FAC",
-//"freizeit",
-"FTL",
-"Gren",
-"Helicrew",
-"Helipilot",
-"HMG",
-"LAT",
-"Light",
-"LMG",
-"Medic",
-"MMG",
-"Mortar",
-"Para",
-"Pilot",
-"PL",
-"Rifleman",
-"SL",
-"Sniper",
-"Spotter",
-"SS",
-//"Survivor",
-"UAV",
-"Unarmed"
-//"VR"
-];*/
+forEach CODI_Loadout_Internal_ClassTextMap;
+
 lbSetCurSel[2100, 0];
 lbSetCurSel[2101, 0];
 

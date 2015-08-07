@@ -1,55 +1,14 @@
-private["_side","_class","_silenced","_medic","_exSpec","_pilot","_sideInt","_hasNV","_classText","_map"];
+private["_side","_class","_silenced","_medic","_exSpec","_pilot","_sideInt","_hasNV","_classText"];
 _side = lbText[2100, lbCurSel 2100];
 _classText = lbText[2101, lbCurSel 2101];
 _class = "Rifleman";
-_map = [
-	["AA","Anti Air"],
-	["AsAGMG","Assisting Autonomous Grenade Machine Gun"],
-	["AsAHMG","Assisting Autonomous Heavy Machine Gun"],
-	["AGMG","Autonomous Grenade Machine Gun"],
-	["AHMG","Autonomous Heavy Machine Gun"],
-	["AsMortar","Assisting Mortar"],
-	["AT","Anti Tank"],
-	["AsAA","Assisting Anti Air"],
-	["AsAT","Assisting Anti Tank"],
-	["AsHMG","Assisting Heavy Machine Gun"],
-	["AsLMG","Assisting Light Machine Gun"],
-	["AsMMG","Assisting Medium Machine Gun"],
-	["CFR","Combat First Responder"],
-	["Crew","Crew"],
-	["DM","Designated Marksman"],
-	["Eng","Engineer"],
-	["ExSpec","Explosive Specialist"],
-	["FAC","Forward Air Controller"],
-	["FTL","Fire Team Lead"],
-	["Gren","Grenadier"],
-	["Helicrew","Helicrew"],
-	["Helipilot","Helipilot"],
-	["HMG","Heavy Machine Gun"],
-	["LAT","Light Anti Tank"],
-	["Light","Light Rifleman"],
-	["LMG","Light Machine Gun"],
-	["Medic","Medic"],
-	["MMG","Medium Machine Gun"],
-	["Mortar","Mortar"],
-	["Para","Paratrooper"],
-	["Pilot","Pilot"],
-	["PL","Platoon Lead"],
-	["Rifleman","Rifleman"],
-	["SL","Squad Lead"],
-	["Sniper","Sniper"],
-	["Spotter","Spotter"],
-	["SS","Sharpshooter"],
-	["UAV","Unmanned Aerial Vehicle"],
-	["Unarmed","Unarmed"]
-];
 {
 	if (_classText == _x select 1) then
 	{
 		_class = _x select 0;
 	};
 }
-forEach _map;
+forEach CODI_Loadout_Internal_ClassTextMap;
 _silenced = cbChecked (CODI_Loadout_ClassSelector displayCtrl 2800);
 _medic = cbChecked (CODI_Loadout_ClassSelector displayCtrl 2801);
 _exSpec = cbChecked (CODI_Loadout_ClassSelector displayCtrl 2802);
