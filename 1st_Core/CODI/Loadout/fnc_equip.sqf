@@ -1,8 +1,8 @@
 private["_unit","_side","_isSilenced","_hasNV","_isMedic","_isPilot","_isExSpec"];
 
 _unit = param [0, player];
-_side = param [1, 2];
-_isSilenced = param [2, false];
+_side = param [1, 3];
+_isSilenced = param [2, true];
 _hasNV = param [3, true];
 _isMedic = param [4, false];
 _isExSpec = param [5, false];
@@ -46,6 +46,7 @@ if (CODI_Loadout_Rifle select _side != "") then
 	_unit addWeapon (CODI_Loadout_Rifle select _side);
 	if (isClass (configFile >> "CfgPatches" >> "ace_safemode")) then
 	{
+		[_unit, currentWeapon _unit, currentMuzzle _unit] call ACE_SafeMode_fnc_unlockSafety;
 		[_unit, currentWeapon _unit, currentMuzzle _unit] call ACE_SafeMode_fnc_lockSafety;
 	};
 	if (CODI_Loadout_RifleOptic select _side != "") then
@@ -275,9 +276,16 @@ if (isClass (configFile >> "CfgPatches" >> "ace_medical")) then
 		_unit setVariable ["ACE_Medical_medicClass", 0, true];
 	};
 };
-if (_isExSpec) then
+if (isClass (configFile >> "CfgPatches" >> "ace_medical")) then
 {
-
+	if (_isExSpec) then
+	{
+		_unit setVariable ["ACE_isEOD", 1, true];
+	}
+	else
+	{
+		_unit setVariable ["ACE_isEOD", 0, true];
+	};
 };
 if (isClass (configFile >> "CfgPatches" >> "ace_gforces")) then
 {

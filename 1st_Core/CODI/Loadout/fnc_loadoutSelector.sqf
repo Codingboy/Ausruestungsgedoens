@@ -1,4 +1,5 @@
 private["_side","_class","_silenced","_medic","_exSpec","_pilot","_sideInt","_hasNV","_classText"];
+disableSerialization;
 _side = lbText[2100, lbCurSel 2100];
 _classText = lbText[2101, lbCurSel 2101];
 _class = "Rifleman";

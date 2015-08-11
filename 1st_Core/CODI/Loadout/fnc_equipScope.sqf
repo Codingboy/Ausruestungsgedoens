@@ -1,5 +1,5 @@
 private["_scope"];
-
+disableSerialization;
 _scope = lbText[2100, lbCurSel 2100];
 {
 	if (_scope == (_x select 1)) then

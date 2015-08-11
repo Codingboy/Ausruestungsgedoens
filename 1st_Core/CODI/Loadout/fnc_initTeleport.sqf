@@ -1,3 +1,4 @@
+disableSerialization;
 {
 	if (name player != name _x) then
 	{

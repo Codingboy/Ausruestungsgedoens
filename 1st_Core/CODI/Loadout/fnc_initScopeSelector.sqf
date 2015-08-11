@@ -1,3 +1,4 @@
+disableSerialization;
 CODI_Loadout_ScopeSelector_scopes =
 [
 	["optic_ACO_grn","ACO (Green)",["Rifleman"]],

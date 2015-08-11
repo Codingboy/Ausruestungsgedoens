@@ -1,3 +1,4 @@
+disableSerialization;
 {
 	lbAdd[2100, _x];
 }
