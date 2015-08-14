@@ -1,4 +1,4 @@
-CHVD_maxView = 1500;//limitiert CHVD auf die maximale sichtweite 1500
+[code]CHVD_maxView = 1500;//limitiert CHVD auf die maximale sichtweite 1500
 setViewDistance = 1500 min viewDistance;//setzt die viewdistance auf maximal 1500
 
 if (isServer) then
@@ -17,13 +17,19 @@ if (isServer) then
 	CODI_Loadout_isSilenced = true;//einheiten werden mit schalldämpfer ausgerüstet   default: false
 	CODI_Loadout_hasNV = true;//einheiten werden mit nachtsichtgerät ausgerüstet   default: false
 	CODI_Loadout_SupplyDrop = true;//einheiten können nachschub mit rauchgranaten anfordern   default: true
-	CODI_Loadout_StartEquipped = true//einheiten starten ausgerüstet   default: false (freizeitkleidung)
+	CODI_Loadout_StartEquipped = true;//einheiten starten ausgerüstet   default: false (freizeitkleidung)
+	CODI_Loadout_cs = true;//freischalten die klasse ingame wechseln zukönnen   default: false
+	CODI_Loadout_va = true;//freischalten das virtual arsenal nutzen zu können   default: false
+	CODI_Loadout_ss = true;//freischalten die visiere ingame wechseln zu können   default: false
 	publicVariable "CODI_Loadout_Faction";
 	publicVariable "CODI_Loadout_isSilenced";
 	publicVariable "CODI_Loadout_hasNV";
 	publicVariable "CODI_Loadout_SupplyDrop";
 	publicVariable "CODI_Loadout_StartEquipped";
-};
+	publicVariable "CODI_Loadout_cs";
+	publicVariable "CODI_Loadout_va";
+	publicVariable "CODI_Loadout_ss";
+};[/code]
 
 Ausrüstungskiste platzieren:
 EMPTY >> AMMO >> 1st Ausrüstungskiste
@@ -50,5 +56,7 @@ definiert einheit als Assisting HMG:
 this setVariable["CODI_Loadout_Class", "AsHMG"];
 definiert einheit als ForwardAirController/JTAC:
 this setVariable["CODI_Loadout_Class", "FAC"];
+definiert einheit als Medic:
+this setVariable["CODI_Loadout_Class", "Medic"];
 
 B_Soldier_A_F, B_Competitor_F und B_RangeMaster_F sind nicht implementiert

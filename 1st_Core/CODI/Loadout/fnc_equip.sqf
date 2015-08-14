@@ -44,11 +44,6 @@ if (CODI_Loadout_Rifle select _side != "") then
 		forEach (CODI_Loadout_RifleAmmo select _side);
 	};
 	_unit addWeapon (CODI_Loadout_Rifle select _side);
-	if (isClass (configFile >> "CfgPatches" >> "ace_safemode")) then
-	{
-		[_unit, currentWeapon _unit, currentMuzzle _unit] call ACE_SafeMode_fnc_unlockSafety;
-		[_unit, currentWeapon _unit, currentMuzzle _unit] call ACE_SafeMode_fnc_lockSafety;
-	};
 	if (CODI_Loadout_RifleOptic select _side != "") then
 	{
 		_unit addPrimaryWeaponItem (CODI_Loadout_RifleOptic select _side);
@@ -280,11 +275,11 @@ if (isClass (configFile >> "CfgPatches" >> "ace_medical")) then
 {
 	if (_isExSpec) then
 	{
-		_unit setVariable ["ACE_isEOD", 1, true];
+		_unit setVariable ["ACE_isEOD", true, true];
 	}
 	else
 	{
-		_unit setVariable ["ACE_isEOD", 0, true];
+		_unit setVariable ["ACE_isEOD", false, true];
 	};
 };
 if (isClass (configFile >> "CfgPatches" >> "ace_gforces")) then
@@ -297,4 +292,9 @@ if (isClass (configFile >> "CfgPatches" >> "ace_gforces")) then
 	{
 		_unit setVariable ["ACE_GForceCoef", 1.0, true];
 	};
+};
+if (isClass (configFile >> "CfgPatches" >> "ace_safemode")) then
+{
+	[_unit, currentWeapon _unit, currentMuzzle _unit] call ACE_SafeMode_fnc_unlockSafety;
+	[_unit, currentWeapon _unit, currentMuzzle _unit] call ACE_SafeMode_fnc_lockSafety;
 };

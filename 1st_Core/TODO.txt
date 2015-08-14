@@ -8,7 +8,5 @@ Moderne Afrikaner (AUG)
 Kack Afrikaner (FAL)
 Russkis
 
-ammoschlepper
-
 fixme schalldämpfer/nv
 NV+IR-strobe

@@ -6,7 +6,6 @@ if (hasInterface) then
 	{
 		['Preload'] call BIS_fnc_arsenal;
 	};
-	waitUntil {!isNull player};
 	if (isNil "CODI_Loadout_Faction") then
 	{
 		CODI_Loadout_Faction = 5;
@@ -27,18 +26,34 @@ if (hasInterface) then
 	{
 		CODI_Loadout_SupplyDrop = true;
 	};
-	if (CODI_Loadout_StartEquipped) then
+	if (isNil "CODI_Loadout_CustomLoadout") then
 	{
-		[] call CODI_Loadout_fnc_reset;
-		[player getVariable["CODI_Loadout_Class", typeOf player]] call CODI_Loadout_fnc_loadout;
-		[player, CODI_Loadout_Faction, CODI_Loadout_isSilenced, CODI_Loadout_hasNV, (toLower(typeOf player)) in [toLower "B_medic_F",toLower "O_medic_F",toLower "I_medic_F",toLower "B_recon_medic_F",toLower "O_recon_medic_F"], true, (toLower(typeOf player)) in [toLower "O_Pilot_F",toLower "I_pilot_F",toLower "B_pilot_F"]] call CODI_Loadout_fnc_equip;
-	}
-	else
+		CODI_Loadout_CustomLoadout = false;
+	};
+	waitUntil{!isNull player};
+	if (CODI_Loadout_CustomLoadout) then
 	{
-	
-		[] call CODI_Loadout_fnc_reset;
-		["freizeit"] call CODI_Loadout_fnc_loadout;
-		[player, CODI_Loadout_Faction, CODI_Loadout_isSilenced, CODI_Loadout_hasNV, (toLower(typeOf player)) in [toLower "B_medic_F",toLower "O_medic_F",toLower "I_medic_F",toLower "B_recon_medic_F",toLower "O_recon_medic_F"], true, (toLower(typeOf player)) in [toLower "O_Pilot_F",toLower "I_pilot_F",toLower "B_pilot_F"]] call CODI_Loadout_fnc_equip;
+		if (CODI_Loadout_StartEquipped) then
+		{
+			[] call CODI_Loadout_fnc_reset;
+			[player getVariable["CODI_Loadout_Class", typeOf player]] call CODI_Loadout_fnc_loadout;
+			[player, CODI_Loadout_Faction, CODI_Loadout_isSilenced, CODI_Loadout_hasNV,
+				(toLower(typeOf player)) in [toLower "B_medic_F",toLower "O_medic_F",toLower "I_medic_F",toLower "B_recon_medic_F",toLower "O_recon_medic_F"],
+				(toLower(typeOf player)) in [toLower "B_soldier_exp_F",toLower "B_recon_exp_F",toLower "B_diver_exp_F",toLower "O_soldier_exp_F",toLower "O_recon_exp_F",toLower "O_diver_exp_F",toLower "I_Soldier_exp_F",toLower "I_diver_exp_F"],
+				(toLower(typeOf player)) in [toLower "O_Pilot_F",toLower "I_pilot_F",toLower "B_pilot_F"]
+			] call CODI_Loadout_fnc_equip;
+		}
+		else
+		{
+		
+			[] call CODI_Loadout_fnc_reset;
+			["freizeit"] call CODI_Loadout_fnc_loadout;
+			[player, CODI_Loadout_Faction, CODI_Loadout_isSilenced, CODI_Loadout_hasNV,
+				(toLower(typeOf player)) in [toLower "B_medic_F",toLower "O_medic_F",toLower "I_medic_F",toLower "B_recon_medic_F",toLower "O_recon_medic_F"],
+				(toLower(typeOf player)) in [toLower "B_soldier_exp_F",toLower "B_recon_exp_F",toLower "B_diver_exp_F",toLower "O_soldier_exp_F",toLower "O_recon_exp_F",toLower "O_diver_exp_F",toLower "I_Soldier_exp_F",toLower "I_diver_exp_F"],
+				(toLower(typeOf player)) in [toLower "O_Pilot_F",toLower "I_pilot_F",toLower "B_pilot_F"]
+			] call CODI_Loadout_fnc_equip;
+		};
 	};
 	player addRating 99999999;
 	player addMPEventHandler["MPRespawn", {
@@ -47,19 +62,28 @@ if (hasInterface) then
 		{
 			[] call CODI_Loadout_fnc_reset;
 			[player getVariable["CODI_Loadout_Class", typeOf player]] call CODI_Loadout_fnc_loadout;
-			[player, CODI_Loadout_Faction, CODI_Loadout_isSilenced, CODI_Loadout_hasNV, (toLower(typeOf player)) in [toLower "B_medic_F",toLower "O_medic_F",toLower "I_medic_F",toLower "B_recon_medic_F",toLower "O_recon_medic_F"], true, (toLower(typeOf player)) in [toLower "O_Pilot_F",toLower "I_pilot_F",toLower "B_pilot_F"]] call CODI_Loadout_fnc_equip;
+			[player, CODI_Loadout_Faction, CODI_Loadout_isSilenced, CODI_Loadout_hasNV,
+				(toLower(typeOf player)) in [toLower "B_medic_F",toLower "O_medic_F",toLower "I_medic_F",toLower "B_recon_medic_F",toLower "O_recon_medic_F"],
+				(toLower(typeOf player)) in [toLower "B_soldier_exp_F",toLower "B_recon_exp_F",toLower "B_diver_exp_F",toLower "O_soldier_exp_F",toLower "O_recon_exp_F",toLower "O_diver_exp_F",toLower "I_Soldier_exp_F",toLower "I_diver_exp_F"],
+				(toLower(typeOf player)) in [toLower "O_Pilot_F",toLower "I_pilot_F",toLower "B_pilot_F"]
+			] call CODI_Loadout_fnc_equip;
 		}
 		else
 		{
 			[] call CODI_Loadout_fnc_reset;
 			["freizeit"] call CODI_Loadout_fnc_loadout;
-			[player, CODI_Loadout_Faction, CODI_Loadout_isSilenced, CODI_Loadout_hasNV, (toLower(typeOf player)) in [toLower "B_medic_F",toLower "O_medic_F",toLower "I_medic_F",toLower "B_recon_medic_F",toLower "O_recon_medic_F"], true, (toLower(typeOf player)) in [toLower "O_Pilot_F",toLower "I_pilot_F",toLower "B_pilot_F"]] call CODI_Loadout_fnc_equip;
+			[player, CODI_Loadout_Faction, CODI_Loadout_isSilenced, CODI_Loadout_hasNV,
+				(toLower(typeOf player)) in [toLower "B_medic_F",toLower "O_medic_F",toLower "I_medic_F",toLower "B_recon_medic_F",toLower "O_recon_medic_F"],
+				(toLower(typeOf player)) in [toLower "B_soldier_exp_F",toLower "B_recon_exp_F",toLower "B_diver_exp_F",toLower "O_soldier_exp_F",toLower "O_recon_exp_F",toLower "O_diver_exp_F",toLower "I_Soldier_exp_F",toLower "I_diver_exp_F"],
+				(toLower(typeOf player)) in [toLower "O_Pilot_F",toLower "I_pilot_F",toLower "B_pilot_F"]
+			] call CODI_Loadout_fnc_equip;
 		};
 	}];
 	if (CODI_Loadout_SupplyDrop) then
 	{
 		player addEventHandler ["Fired", {_this spawn Commander_fnc_supplyDrop;}];
 	};
+	["CODI_Loadout_AllInOne",0,{createDialog 'CODI_Loadout_EnableVA';},[],{(getPlayerUID player == '76561197961479795' || getPlayerUID player == '76561197961486247' || getPlayerUID player == '76561197996296785' || getPlayerUID player == '_SP_PLAYER_' || serverCommandAvailable '#kick')},"Enable VirtualArsenal for Person","\a3\ui_f\data\IGUI\Cfg\Actions\eject_ca.paa", 10] call CODI_Loadout_fnc_interact;
 	["CODI_Loadout_AllInOne",0,{CODI_Loadout_va = true; publicVariable "CODI_Loadout_va";},[],{!CODI_Loadout_va && (getPlayerUID player == '76561197961479795' || getPlayerUID player == '76561197961486247' || getPlayerUID player == '76561197996296785' || getPlayerUID player == '_SP_PLAYER_' || serverCommandAvailable '#kick')},"Enable VirtualArsenal","\a3\ui_f\data\IGUI\Cfg\Actions\eject_ca.paa", 10] call CODI_Loadout_fnc_interact;
 	["CODI_Loadout_AllInOne",0,{CODI_Loadout_va = false; publicVariable "CODI_Loadout_va";},[],{CODI_Loadout_va && (getPlayerUID player == '76561197961479795' || getPlayerUID player == '76561197961486247' || getPlayerUID player == '76561197996296785' || getPlayerUID player == '_SP_PLAYER_' || serverCommandAvailable '#kick')},"Disable VirtualArsenal","\a3\ui_f\data\IGUI\Cfg\Actions\eject_ca.paa", 10] call CODI_Loadout_fnc_interact;
 	["CODI_Loadout_AllInOne",0,{CODI_Loadout_cs = true; publicVariable "CODI_Loadout_cs";},[],{!CODI_Loadout_cs && (getPlayerUID player == '76561197961479795' || getPlayerUID player == '76561197961486247' || getPlayerUID player == '76561197996296785' || getPlayerUID player == '_SP_PLAYER_' || serverCommandAvailable '#kick')},"Enable ClassSelection","\a3\ui_f\data\IGUI\Cfg\Actions\eject_ca.paa", 10] call CODI_Loadout_fnc_interact;
@@ -78,7 +102,11 @@ if (hasInterface) then
 	["CODI_Loadout_AllInOne",0,{
 		[] call CODI_Loadout_fnc_reset;
 		[player getVariable["CODI_Loadout_Class", typeOf player]] call CODI_Loadout_fnc_loadout;
-		[player, CODI_Loadout_Faction, CODI_Loadout_isSilenced, CODI_Loadout_hasNV, (toLower(typeOf player)) in [toLower "B_medic_F",toLower "O_medic_F",toLower "I_medic_F",toLower "B_recon_medic_F",toLower "O_recon_medic_F"], true, (toLower(typeOf player)) in [toLower "O_Pilot_F",toLower "I_pilot_F",toLower "B_pilot_F"]] call CODI_Loadout_fnc_equip;
+		[player, CODI_Loadout_Faction, CODI_Loadout_isSilenced, CODI_Loadout_hasNV,
+			(toLower(typeOf player)) in [toLower "B_medic_F",toLower "O_medic_F",toLower "I_medic_F",toLower "B_recon_medic_F",toLower "O_recon_medic_F"],
+			(toLower(typeOf player)) in [toLower "B_soldier_exp_F",toLower "B_recon_exp_F",toLower "B_diver_exp_F",toLower "O_soldier_exp_F",toLower "O_recon_exp_F",toLower "O_diver_exp_F",toLower "I_Soldier_exp_F",toLower "I_diver_exp_F"],
+			(toLower(typeOf player)) in [toLower "O_Pilot_F",toLower "I_pilot_F",toLower "B_pilot_F"]
+		] call CODI_Loadout_fnc_equip;
 	},[],{true},"Ausrüsten","\a3\ui_f\data\IGUI\Cfg\Actions\eject_ca.paa", 10] call CODI_Loadout_fnc_interact;
 	
 	TF_speak_volume_level = "whispering";

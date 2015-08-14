@@ -1,3 +1,9 @@
+tf_no_auto_long_range_radio = true;
+TF_give_personal_radio_to_regular_soldier = false;
+TF_give_microdagr_to_soldier = false;
+tf_same_sw_frequencies_for_side = true;
+tf_same_lr_frequencies_for_side = true;
+
 KK_fnc_push =
 {
 	_this select 0 pushBack (_this select 1);
@@ -343,6 +349,9 @@ CODI_Loadout_fnc_initAllInOne = compile preprocessFileLineNumbers "\1st_Core\COD
 CODI_Loadout_fnc_equipScope = compile preprocessFileLineNumbers "\1st_Core\CODI\Loadout\fnc_equipScope.sqf";
 CODI_Loadout_fnc_equipNV = compile preprocessFileLineNumbers "\1st_Core\CODI\Loadout\fnc_equipNV.sqf";
 CODI_Loadout_fnc_equipSilencer = compile preprocessFileLineNumbers "\1st_Core\CODI\Loadout\fnc_equipSilencer.sqf";
+CODI_Loadout_fnc_initEnableVA = compile preprocessFileLineNumbers "\1st_Core\CODI\Loadout\fnc_initEnableVA.sqf";
+CODI_Loadout_fnc_enableVA = compile preprocessFileLineNumbers "\1st_Core\CODI\Loadout\fnc_enableVA.sqf";
+CODI_Loadout_fnc_enableVALocal = compile preprocessFileLineNumbers "\1st_Core\CODI\Loadout\fnc_enableVALocal.sqf";
 
 if (isServer) then
 {
