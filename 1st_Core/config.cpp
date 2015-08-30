@@ -28,8 +28,14 @@ class Extended_PreInit_EventHandlers
 {
     class ArsenalInit
 	{
-        clientInit = "[] execVM '\1st_Core\initClient.sqf';";
-        init = "[] call compile preprocessFileLineNumbers '\1st_Core\init.sqf';";
+        init = "[] call compile preprocessFileLineNumbers '\1st_Core\preInit.sqf';";
+    };
+};
+class Extended_PostInit_EventHandlers
+{
+    class ArsenalInit
+	{
+        init = "[] execVM '\1st_Core\postInit.sqf';";
     };
 };
 

@@ -2,7 +2,6 @@ _unit = _this select 0;
 _weapon = _this select 1;
 _ammo = _this select 4;
 _projectile = _this select 6;
-_side = 4;
 
 if (_weapon != "Throw") exitWith{};
 if (!(_ammo == "SmokeShellYellow" OR _ammo == "SmokeShellBlue")) exitWith{};
@@ -30,8 +29,9 @@ switch (side _unit) do
 };
 
 _heli = createVehicle ["B_Heli_Transport_03_unarmed_F", _markerPos, [], 0, "FLY"];
-_group = createGroup independent;
-_pilot = _group createUnit ["I_helipilot_F", _markerPos, [], 0, "FORM"];
+_group = createGroup (side _unit);
+_pilot = _group createUnit ["B_helipilot_F", _markerPos, [], 0, "FORM"];
+_pilot setSkill 1;
 _pilot moveInDriver _heli;
 _pilot allowFleeing 0;
 sleep 10;
@@ -76,7 +76,7 @@ if (_ammo == "SmokeShellYellow") then
 		[] call CODI_Loadout_fnc_reset;
 		[_x getVariable["CODI_Loadout_Class", typeOf _x]] call CODI_Loadout_fnc_loadout;
 		{
-			_var = _x select _side;
+			_var = _x select CODI_Loadout_Faction;
 			{
 				_veh addMagazineCargoGlobal _x;
 			}
@@ -86,7 +86,7 @@ if (_ammo == "SmokeShellYellow") then
 		{
 			_veh addMagazineCargoGlobal [_x, 1];
 		}
-		forEach (CODI_Loadout_RifleAmmo select _side);
+		forEach (CODI_Loadout_RifleAmmo select CODI_Loadout_Faction);
 	}
 	forEach (units(group _unit));
 };
@@ -97,7 +97,7 @@ if (_ammo == "SmokeShellBlue") then
 	{
 		_veh addItemCargoGlobal _x;
 	}
-	forEach (CODI_Loadout_BackpackItems select _side);
+	forEach (CODI_Loadout_BackpackItems select CODI_Loadout_Faction);
 };
  
  //hubschrauber löschen 

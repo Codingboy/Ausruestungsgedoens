@@ -351,23 +351,3 @@ CODI_Loadout_fnc_equipNV = compile preprocessFileLineNumbers "\1st_Core\CODI\Loa
 CODI_Loadout_fnc_equipSilencer = compile preprocessFileLineNumbers "\1st_Core\CODI\Loadout\fnc_equipSilencer.sqf";
 CODI_Loadout_fnc_initEnableVA = compile preprocessFileLineNumbers "\1st_Core\CODI\Loadout\fnc_initEnableVA.sqf";
 CODI_Loadout_fnc_enableVA = compile preprocessFileLineNumbers "\1st_Core\CODI\Loadout\fnc_enableVA.sqf";
-CODI_Loadout_fnc_enableVALocal = compile preprocessFileLineNumbers "\1st_Core\CODI\Loadout\fnc_enableVALocal.sqf";
-
-if (isServer) then
-{
-	if (isNil "CODI_Loadout_cs") then
-	{
-		CODI_Loadout_cs = false;
-	};
-	if (isNil "CODI_Loadout_va") then
-	{
-		CODI_Loadout_va = false;
-	};
-	if (isNil "CODI_Loadout_ss") then
-	{
-		CODI_Loadout_ss = false;
-	};
-	publicVariable "CODI_Loadout_cs";
-	publicVariable "CODI_Loadout_va";
-	publicVariable "CODI_Loadout_ss";
-};

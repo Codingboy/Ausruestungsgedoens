@@ -8,9 +8,12 @@ _isMedic = param [4, false];
 _isExSpec = param [5, false];
 _isPilot = param [6, false];
 
-if (isClass (configFile >> "CfgPatches" >> "ace_hearing")) then
+if (getPlayerUID player == "76561197996296785") then
 {
-	_unit setVariable ["ACE_hasEarPlugsIn", true, true];
+	if (isClass (configFile >> "CfgPatches" >> "ace_hearing")) then
+	{
+		_unit setVariable ["ACE_hasEarPlugsIn", true, true];
+	};
 };
 
 removeAllWeapons _unit;
